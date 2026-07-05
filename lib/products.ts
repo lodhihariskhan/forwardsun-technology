@@ -86,7 +86,8 @@ export const productPreviewCategories: ProductCategory[] = [
   },
   {
     title: "BOS & Protection Equipment",
-    description: "Core protection and wiring components for safer solar system performance.",
+    description:
+      "AC/DC wiring, breakers, isolators, SPDs, earthing, DB boxes, MC4 connectors, cable trays, conduits, and protection panels selected according to system safety and installation requirements.",
     icon: ShieldCheck,
     items: [
       { name: "AC/DC wiring" },
@@ -96,18 +97,22 @@ export const productPreviewCategories: ProductCategory[] = [
       { name: "Earthing" },
       { name: "DB boxes" },
       { name: "MC4 connectors" },
+      { name: "Cable trays" },
+      { name: "Conduits" },
+      { name: "Protection panels" },
     ],
   },
   {
     title: "Mounting Structures",
-    description: "Structure options selected around roof type, strength, airflow, and access.",
+    description:
+      "Elevated structures, GI/iron structures, aluminium structures, roof mounting, and commercial mounting options selected according to roof type, structure strength, airflow, and site conditions.",
     icon: Grid2X2,
     items: [
       { name: "Elevated structures" },
-      { name: "Iron structures" },
-      { name: "GI structures" },
+      { name: "GI/iron structures" },
       { name: "Aluminium structures" },
       { name: "Roof mounting" },
+      { name: "Commercial mounting" },
     ],
   },
 ];
@@ -152,7 +157,7 @@ export const productGroups: ProductGroup[] = [
   {
     title: "BOS & Protection Equipment",
     description:
-      "Balance of System and protection components that keep solar wiring organized, protected, and serviceable.",
+      "AC/DC wiring, breakers, isolators, SPDs, earthing, DB boxes, MC4 connectors, cable trays, conduits, and protection panels selected according to system safety and installation requirements.",
     icon: ShieldCheck,
     items: [
       "AC/DC Wiring",
@@ -168,7 +173,7 @@ export const productGroups: ProductGroup[] = [
   {
     title: "Mounting Structures",
     description:
-      "Structure options selected according to roof type, project scale, wind exposure, access, and long-term durability.",
+      "Elevated structures, GI/iron structures, aluminium structures, roof mounting, and commercial mounting options selected according to roof type, structure strength, airflow, and site conditions.",
     icon: Grid2X2,
     items: [
       "Elevated Structures",

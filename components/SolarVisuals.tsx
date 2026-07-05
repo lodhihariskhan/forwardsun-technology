@@ -50,6 +50,15 @@ const assessmentSteps = [
   { label: "Clear quote", icon: CheckCircle2 },
 ];
 
+const trustTiles = [
+  "Site review",
+  "Usage check",
+  "Product fit",
+  "Clean wiring",
+  "Protection",
+  "Backup plan",
+];
+
 export function HomeHeroVisual() {
   return (
     <div className="relative rounded-3xl border border-line bg-white p-3 text-charcoal shadow-premium">
@@ -102,7 +111,7 @@ export function HomeHeroVisual() {
             </p>
           </div>
           <div className="hidden h-px w-16 bg-solar sm:block" />
-          <div className="rounded-2xl bg-forest p-4 text-sm font-bold leading-6 text-white/78">
+          <div className="rounded-2xl bg-forest p-4 text-sm font-bold leading-6 text-white">
             Usage review + product selection + clean installation + after-sales support.
           </div>
         </div>
@@ -277,12 +286,14 @@ export function AboutTrustVisual() {
             <h2 className="mt-3 text-2xl font-black">Trusted solar planning</h2>
           </div>
         </div>
-        <div className="mt-7 grid grid-cols-5 gap-2" aria-hidden="true">
-          {Array.from({ length: 10 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-12 rounded-lg border border-solar/25 bg-white/10 shadow-inner"
-            />
+        <div className="mt-7 grid gap-2 sm:grid-cols-3">
+          {trustTiles.map((item) => (
+            <div key={item} className="rounded-2xl border border-solar/25 bg-white/10 p-3">
+              <span className="block h-1.5 w-10 rounded-full bg-solar" />
+              <p className="mt-3 text-xs font-black uppercase tracking-[0.12em] text-white/86">
+                {item}
+              </p>
+            </div>
           ))}
         </div>
         <div className="mt-7 grid gap-3">

@@ -39,7 +39,6 @@ export const metadata: Metadata = {
 };
 
 const painIcons = [CircleDollarSign, BatteryWarning, TrendingUp, ClipboardX];
-const homeBrandPreview = productPreviewCategories.slice(0, 4);
 
 const systemFlow = [
   {
@@ -210,7 +209,7 @@ export default function HomePage() {
                 Products & Components
               </span>
               <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
-                Quality Brands We Supply & Install
+                Quality Brands & Product Categories We Supply & Install
               </h2>
               <p className="mt-5 text-base leading-8 text-charcoal/72">
                 ForwardSun Technology works with reliable solar panels, inverters, batteries, EV
@@ -223,7 +222,7 @@ export default function HomePage() {
             </ButtonLink>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {homeBrandPreview.map((category) => (
+            {productPreviewCategories.map((category) => (
               <BrandCategory key={category.title} category={category} compact />
             ))}
           </div>

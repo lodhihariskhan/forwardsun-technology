@@ -11,8 +11,6 @@ import {
 } from "@/lib/products";
 import { whatsappLink } from "@/lib/site";
 
-const brandCategories = productPreviewCategories.slice(0, 4);
-
 export const metadata: Metadata = {
   title: {
     absolute: "Products & Solar System Components | ForwardSun Technology",
@@ -66,15 +64,16 @@ export default function ProductsPage() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-4xl">
             <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
-              Brand Options
+              Product Categories
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
-              Quality Brands We Supply & Install
+              Quality Brands & Product Categories We Supply & Install
             </h2>
             <p className="mt-5 text-base leading-8 text-charcoal/72">
               ForwardSun Technology supplies and installs reliable solar panels, inverters,
-              lithium-ion batteries, and EV chargers selected according to system requirement,
-              budget, warranty, availability, and long-term performance.
+              lithium-ion batteries, EV chargers, BOS protection equipment, and mounting structures
+              selected according to system requirement, budget, warranty, availability, and
+              long-term performance.
             </p>
             <p className="mt-5 rounded-2xl border border-line bg-mist p-4 text-sm font-bold leading-6 text-charcoal/70">
               Product options are recommended based on system size, budget, availability, warranty,
@@ -82,7 +81,7 @@ export default function ProductsPage() {
             </p>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {brandCategories.map((group) => (
+            {productPreviewCategories.map((group) => (
               <BrandGroup key={group.title} group={group} />
             ))}
           </div>

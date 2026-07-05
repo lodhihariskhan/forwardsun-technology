@@ -30,7 +30,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "ForwardSun Technology | Solar Solutions in Lahore",
+  title: "ForwardSun Technology | Solar Solutions For Homes & Businesses",
   description:
     "ForwardSun Technology provides residential, commercial, and hybrid solar solutions with professional installation, quality product selection, maintenance, and after-sales care in Lahore.",
   alternates: {

@@ -327,7 +327,7 @@ export default function HomePage() {
                 <span className="absolute -left-[31px] flex h-12 w-12 items-center justify-center rounded-full bg-forest text-sm font-black text-white ring-8 ring-mist">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <div className="rounded-2xl border border-line bg-white p-5 shadow-card">
+                <div className="ml-8 rounded-2xl border border-line bg-white p-5 shadow-card">
                   <h3 className="text-base font-black text-charcoal">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-charcoal/68">{step.description}</p>
                 </div>

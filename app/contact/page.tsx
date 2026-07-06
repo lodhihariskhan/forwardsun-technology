@@ -126,8 +126,7 @@ export default function ContactPage() {
               </a>
             </div>
             <p className="mt-6 rounded-2xl border border-solar/20 bg-solar/10 p-4 text-sm leading-6 text-white/78">
-              Our team will review your requirements and recommend the most suitable solar
-              solution for your property.
+              Serving homes and businesses across Lahore.
             </p>
           </aside>
         </div>

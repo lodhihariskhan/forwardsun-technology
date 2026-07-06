@@ -205,10 +205,12 @@ export function ContactForm() {
         />
       </label>
 
-      <p className="rounded-2xl border border-line bg-sunsoft p-4 text-sm leading-6 text-charcoal/70">
-        Our team will review your requirements and recommend the most suitable solar solution for
-        your property.
-      </p>
+      {status !== "success" ? (
+        <p className="rounded-2xl border border-line bg-sunsoft p-4 text-sm leading-6 text-charcoal/70">
+          Our team will review your requirements and recommend the most suitable solar solution for
+          your property.
+        </p>
+      ) : null}
 
       {status === "success" ? (
         <div
@@ -245,25 +247,27 @@ export function ContactForm() {
         </p>
       ) : null}
 
-      <div className="grid gap-3 sm:grid-cols-2">
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-bold text-white shadow-card transition hover:-translate-y-0.5 hover:bg-deep hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:bg-forest disabled:hover:shadow-card"
-        >
-          <Send aria-hidden className="h-4 w-4" />
-          {status === "loading" ? "Sending..." : "Get Free Assessment"}
-        </button>
-        <a
-          href={whatsappLink("Hello ForwardSun Technology, I want to request a free solar quote.")}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-white px-5 py-3 text-sm font-bold text-forest shadow-sm transition hover:-translate-y-0.5 hover:border-solar hover:bg-sunsoft hover:shadow-card focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2"
-        >
-          <WhatsAppIcon aria-hidden className="h-4 w-4" />
-          Chat on WhatsApp
-        </a>
-      </div>
+      {status !== "success" ? (
+        <div className="grid gap-3 sm:grid-cols-2">
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-bold text-white shadow-card transition hover:-translate-y-0.5 hover:bg-deep hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:bg-forest disabled:hover:shadow-card"
+          >
+            <Send aria-hidden className="h-4 w-4" />
+            {status === "loading" ? "Sending..." : "Get Free Assessment"}
+          </button>
+          <a
+            href={whatsappLink("Hello ForwardSun Technology, I want to request a free solar quote.")}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-white px-5 py-3 text-sm font-bold text-forest shadow-sm transition hover:-translate-y-0.5 hover:border-solar hover:bg-sunsoft hover:shadow-card focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2"
+          >
+            <WhatsAppIcon aria-hidden className="h-4 w-4" />
+            Chat on WhatsApp
+          </a>
+        </div>
+      ) : null}
     </form>
   );
 }

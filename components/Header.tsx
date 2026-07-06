@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, MessageCircle, Sparkles, X } from "lucide-react";
+import { Menu, Sparkles, X } from "lucide-react";
 import { useState } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { LogoMark } from "@/components/LogoMark";
-import { navItems, site, whatsappLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { navItems, whatsappLink } from "@/lib/site";
 
 export function Header() {
   const pathname = usePathname();
@@ -70,12 +71,13 @@ export function Header() {
             href={whatsappLink("Hello ForwardSun Technology, I want to discuss a solar solution.")}
             target="_blank"
             rel="noreferrer"
+            title="Chat on WhatsApp"
             className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white text-forest shadow-sm transition hover:border-solar hover:bg-sunsoft hover:text-deep"
-            aria-label={`Contact on WhatsApp ${site.whatsappDisplay}`}
+            aria-label="Chat on WhatsApp"
           >
-            <MessageCircle aria-hidden className="h-5 w-5" />
+            <WhatsAppIcon aria-hidden className="h-5 w-5" />
           </a>
-          <ButtonLink href="/contact">Request Free Solar Assessment</ButtonLink>
+          <ButtonLink href="/contact">Get Free Assessment</ButtonLink>
         </div>
 
         <button
@@ -113,15 +115,15 @@ export function Header() {
           </nav>
           <div className="mx-auto mt-4 grid max-w-7xl gap-3 sm:grid-cols-2">
             <ButtonLink href="/contact" className="w-full" variant="primary">
-              Request Free Solar Assessment
+              Get Free Assessment
             </ButtonLink>
             <ButtonLink
               href={whatsappLink("Hello ForwardSun Technology, I want to request a solar quote.")}
               className="w-full"
               variant="outline"
-              icon={MessageCircle}
+              icon={WhatsAppIcon}
             >
-              WhatsApp
+              Chat on WhatsApp
             </ButtonLink>
           </div>
         </div>

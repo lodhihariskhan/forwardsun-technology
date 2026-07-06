@@ -45,7 +45,7 @@ export default function AboutPage() {
               product options, and provide a transparent quotation before installation begins.
             </p>
             <ButtonLink href="/contact" className="mt-8">
-              Request Free Solar Assessment
+              Get Free Assessment
             </ButtonLink>
           </div>
           <AboutTrustVisual />

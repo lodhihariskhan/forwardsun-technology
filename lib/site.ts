@@ -16,11 +16,13 @@ export const site = {
   name: "ForwardSun Technology",
   domain: "forwardsuntechnology.com",
   url: "https://forwardsuntechnology.com",
-  whatsappDisplay: "+92 300 7761971",
-  whatsappNumber: "923007761971",
+  whatsappDisplay: "+92 330 5259922",
+  whatsappNumber: "923305259922",
   callDisplay: "+92 330 5259922",
   callHref: "tel:+923305259922",
   location: "DHA Rahbar, Lahore",
+  mapHref: "https://www.google.com/maps/search/?api=1&query=DHA%20Rahbar%2C%20Lahore",
+  workingHours: "Mon-Sat, 10:00 AM - 5:00 PM",
 };
 
 export const navItems = [
@@ -91,7 +93,7 @@ export const processSteps = [
   },
   {
     title: "Usage and bill review",
-    description: "We review bill range, unit usage, and backup needs before sizing options.",
+    description: "We review monthly units, usage patterns, and backup needs before sizing options.",
   },
   {
     title: "Site assessment",
@@ -171,7 +173,7 @@ export const faqs = [
   {
     question: "What information is needed for a solar estimate?",
     answer:
-      "Basic location details, electricity usage, monthly bill range, available space, and backup requirement help us prepare a better estimate. For a more accurate estimate, our team may request your latest electricity bill or monthly unit usage.",
+      "Basic location details, average monthly units, available space, and backup requirement help us prepare a better estimate. Our team will review your requirements and recommend the most suitable solar solution for your property.",
   },
 ];
 

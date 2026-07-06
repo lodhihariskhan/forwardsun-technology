@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { CheckCircle2, MessageCircle } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { ServicesOverviewVisual } from "@/components/SolarVisuals";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { serviceDetails } from "@/lib/serviceDetails";
 import { whatsappLink } from "@/lib/site";
 
@@ -66,14 +67,14 @@ export default function ServicesPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/contact" variant="primary">
-                Request Free Solar Assessment
+                Get Free Assessment
               </ButtonLink>
               <ButtonLink
                 href={whatsappLink("Hello ForwardSun Technology, I want to discuss solar services.")}
                 variant="outline"
-                icon={MessageCircle}
+                icon={WhatsAppIcon}
               >
-                Contact on WhatsApp
+                Chat on WhatsApp
               </ButtonLink>
             </div>
           </div>
@@ -114,20 +115,20 @@ export default function ServicesPage() {
               Not Sure Which Service You Need?
             </h2>
             <p className="mt-4 text-base leading-7 text-charcoal/72">
-              Share your location, bill range, customer type, and backup requirement. ForwardSun
+              Share your location, monthly units, customer type, and backup requirement. ForwardSun
               Technology will guide you toward the right solar service path.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
             <ButtonLink href="/contact" variant="primary">
-              Request Free Solar Assessment
+              Get Free Assessment
             </ButtonLink>
             <ButtonLink
               href={whatsappLink("Hello ForwardSun Technology, I am not sure which solar service I need.")}
               variant="outline"
-              icon={MessageCircle}
+              icon={WhatsAppIcon}
             >
-              Contact on WhatsApp
+              Chat on WhatsApp
             </ButtonLink>
           </div>
         </div>
@@ -203,7 +204,7 @@ function ServiceSection({
           <h3 className="text-sm font-black uppercase tracking-[0.14em] text-forest">Outcome</h3>
           <p className="mt-3 text-base font-bold leading-7 text-charcoal/78">{service.outcome}</p>
           <ButtonLink href="/contact" className="mt-5" variant="primary">
-            Request Assessment
+            Get Free Assessment
           </ButtonLink>
         </div>
       </div>

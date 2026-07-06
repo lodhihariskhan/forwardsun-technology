@@ -1,11 +1,9 @@
 import {
   AlertTriangle,
   BatteryWarning,
-  ChevronRight,
   CircleDollarSign,
   ClipboardCheck,
   ClipboardX,
-  MessageCircle,
   PanelsTopLeft,
   ShieldCheck,
   SunMedium,
@@ -19,7 +17,11 @@ import { BrandCategory } from "@/components/BrandCategory";
 import { CTASection } from "@/components/CTASection";
 import { FAQSection } from "@/components/FAQSection";
 import { HomeEcosystemImage, HomeHeroVisual } from "@/components/SolarVisuals";
+import { PlanningReassurance } from "@/components/PlanningReassurance";
+import { RecentProjects } from "@/components/RecentProjects";
 import { TestimonialPlaceholder } from "@/components/TestimonialPlaceholder";
+import { TrustSignals } from "@/components/TrustSignals";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { productPreviewCategories } from "@/lib/products";
 import { serviceDetails } from "@/lib/serviceDetails";
 import {
@@ -99,14 +101,14 @@ export default function HomePage() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/contact" variant="primary">
-                Request Free Solar Assessment
+                Get Free Assessment
               </ButtonLink>
               <ButtonLink
                 href={whatsappLink("Hello ForwardSun Technology, I want to discuss a solar solution.")}
                 variant="outline"
-                icon={MessageCircle}
+                icon={WhatsAppIcon}
               >
-                Contact on WhatsApp
+                Chat on WhatsApp
               </ButtonLink>
             </div>
           </div>
@@ -115,13 +117,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-forest px-4 py-5 text-white sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-center text-sm font-black uppercase tracking-[0.12em] shadow-card">
-          <span className="text-solar">A-Grade Products</span> <span className="mx-2 text-white/40">|</span>{" "}
-          Professional Installation <span className="mx-2 text-white/40">|</span> Warranty Support{" "}
-          <span className="mx-2 text-white/40">|</span> After-Sales Care
-        </div>
-      </section>
+      <TrustSignals tone="dark" />
 
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -172,9 +168,8 @@ export default function HomePage() {
                 Services page.
               </p>
             </div>
-            <ButtonLink href="/services" variant="outline">
+            <ButtonLink href="/services" variant="primary">
               View Services
-              <ChevronRight aria-hidden className="h-4 w-4" />
             </ButtonLink>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
@@ -269,6 +264,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <PlanningReassurance />
+
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div className="max-w-3xl">
@@ -321,9 +318,8 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-            <ButtonLink href="/contact" className="mt-7" variant="outline">
+            <ButtonLink href="/contact" className="mt-7" variant="primary">
               Start Your Assessment
-              <ChevronRight aria-hidden className="h-4 w-4" />
             </ButtonLink>
           </div>
           <ol className="relative grid gap-0 border-l border-line pl-6">
@@ -343,6 +339,8 @@ export default function HomePage() {
       </section>
 
       <TestimonialPlaceholder />
+
+      <RecentProjects />
 
       <FAQSection />
 

@@ -1,12 +1,11 @@
 import Link from "next/link";
-import type { ComponentType, ReactNode } from "react";
-import type { LucideProps } from "lucide-react";
+import type { ComponentType, ReactNode, SVGProps } from "react";
 
 type ButtonLinkProps = {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary" | "outline" | "light";
-  icon?: ComponentType<LucideProps>;
+  icon?: ComponentType<SVGProps<SVGSVGElement>>;
   className?: string;
 };
 
@@ -37,7 +36,7 @@ export function ButtonLink({
         rel={href.startsWith("http") ? "noreferrer" : undefined}
       >
         {Icon ? <Icon aria-hidden className="h-4 w-4 shrink-0" /> : null}
-        <span>{children}</span>
+        {children}
       </a>
     );
   }
@@ -45,7 +44,7 @@ export function ButtonLink({
   return (
     <Link href={href} className={classes}>
       {Icon ? <Icon aria-hidden className="h-4 w-4 shrink-0" /> : null}
-      <span>{children}</span>
+      {children}
     </Link>
   );
 }

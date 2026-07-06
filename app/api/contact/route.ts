@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
+import { consultationOptions, customerTypes } from "@/lib/consultationOptions";
 
 type LeadPayload = {
   fullName?: string;
   phone?: string;
-  email?: string;
   area?: string;
   customerType?: string;
-  billRange?: string;
-  service?: string;
-  message?: string;
+  averageMonthlyUnits?: string;
+  solutionRequired?: string;
+  additionalNotes?: string;
 };
 
 const requiredFields: Array<keyof LeadPayload> = [
@@ -16,19 +16,18 @@ const requiredFields: Array<keyof LeadPayload> = [
   "phone",
   "area",
   "customerType",
-  "billRange",
-  "service",
+  "averageMonthlyUnits",
+  "solutionRequired",
 ];
 
 const fieldLabels: Record<keyof LeadPayload, string> = {
-  fullName: "Full name",
-  phone: "Phone number",
-  email: "Email",
-  area: "City / Area",
-  customerType: "Customer type",
-  billRange: "Monthly electricity bill range",
-  service: "Interested service",
-  message: "Message",
+  fullName: "Full Name",
+  phone: "Mobile / WhatsApp Number",
+  area: "Area (Lahore)",
+  customerType: "Customer Type",
+  averageMonthlyUnits: "Average Monthly Units",
+  solutionRequired: "Solution Required",
+  additionalNotes: "Additional Notes",
 };
 
 function valueFrom(payload: LeadPayload, field: keyof LeadPayload) {
@@ -44,37 +43,96 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#039;");
 }
 
-function buildEmailContent(payload: Required<LeadPayload>, submittedAt: string) {
-  const rows = [
-    ["Full name", payload.fullName],
-    ["Phone number", payload.phone],
-    ["Email", payload.email || "Not provided"],
-    ["City / Area", payload.area],
-    ["Customer type", payload.customerType],
-    ["Monthly electricity bill range", payload.billRange],
-    ["Interested service", payload.service],
-    ["Message", payload.message || "Not provided"],
-    ["Submission date/time", submittedAt],
-  ];
+function detailRow(label: string, value: string) {
+  return `
+    <tr>
+      <td style="padding:12px 0;color:#647067;font-size:13px;font-weight:700;width:42%;">${escapeHtml(label)}</td>
+      <td style="padding:12px 0;color:#102018;font-size:14px;font-weight:700;">${escapeHtml(value).replaceAll("\n", "<br />")}</td>
+    </tr>`;
+}
 
-  const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
-  const htmlRows = rows
-    .map(
-      ([label, value]) => `
-        <tr>
-          <td style="padding:10px 12px;border:1px solid #e5e7eb;font-weight:700;color:#17201d;">${escapeHtml(label)}</td>
-          <td style="padding:10px 12px;border:1px solid #e5e7eb;color:#374151;">${escapeHtml(value).replaceAll("\n", "<br />")}</td>
-        </tr>`,
-    )
+function buildEmailContent(payload: Required<LeadPayload>, submittedAt: string) {
+  const additionalNotes = payload.additionalNotes || "No additional notes provided.";
+  const escapedPhoneHref = escapeHtml(`tel:${payload.phone}`);
+  const leadDetailsRows = [
+    ["Full Name", payload.fullName],
+    ["Mobile / WhatsApp Number", payload.phone],
+    ["Area (Lahore)", payload.area],
+  ]
+    .map(([label, value]) => detailRow(label, value))
+    .join("");
+  const projectDetailsRows = [
+    ["Customer Type", payload.customerType],
+    ["Average Monthly Units", payload.averageMonthlyUnits],
+    ["Solution Required", payload.solutionRequired],
+    ["Submission date/time", submittedAt],
+  ]
+    .map(([label, value]) => detailRow(label, value))
     .join("");
 
+  const text = [
+    "ForwardSun Technology",
+    "New Solar Assessment Request",
+    "",
+    "Lead/contact details",
+    `Full Name: ${payload.fullName}`,
+    `Mobile / WhatsApp Number: ${payload.phone}`,
+    `Call customer: tel:${payload.phone}`,
+    `Area (Lahore): ${payload.area}`,
+    "",
+    "Project details",
+    `Customer Type: ${payload.customerType}`,
+    `Average Monthly Units: ${payload.averageMonthlyUnits}`,
+    `Solution Required: ${payload.solutionRequired}`,
+    `Submission date/time: ${submittedAt}`,
+    "",
+    "Additional Notes",
+    additionalNotes,
+    "",
+    "This message was generated automatically from the ForwardSun Technology website.",
+  ].join("\n");
+
   const html = `
-    <div style="font-family:Arial,sans-serif;line-height:1.5;color:#17201d;">
-      <h1 style="margin:0 0 16px;font-size:22px;color:#0b7a4b;">New Free Solar Assessment Request</h1>
-      <p style="margin:0 0 20px;color:#4b5563;">A new lead was submitted from the ForwardSun Technology website.</p>
-      <table style="border-collapse:collapse;width:100%;max-width:760px;background:#ffffff;">
-        <tbody>${htmlRows}</tbody>
-      </table>
+    <div style="margin:0;padding:0;background:#f6fbf4;font-family:Arial,sans-serif;color:#102018;line-height:1.5;">
+      <div style="max-width:760px;margin:0 auto;padding:28px 16px;">
+        <div style="overflow:hidden;border:1px solid #ddebd8;border-radius:18px;background:#ffffff;box-shadow:0 18px 50px rgba(6,78,47,0.10);">
+          <div style="background:#064e2f;padding:24px 28px;color:#ffffff;">
+            <p style="margin:0 0 8px;color:#f5b400;font-size:13px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;">ForwardSun Technology</p>
+            <h1 style="margin:0;font-size:26px;line-height:1.25;color:#ffffff;">New Solar Assessment Request</h1>
+            <p style="margin:12px 0 0;color:rgba(255,255,255,0.78);font-size:14px;">A new lead was submitted from the ForwardSun Technology website.</p>
+          </div>
+
+          <div style="padding:24px 28px;">
+            <div style="margin:0 0 18px;padding:16px;border:1px solid #ddebd8;border-radius:14px;background:#fff5d6;">
+              <p style="margin:0;color:#064e2f;font-size:14px;font-weight:800;">Quick action</p>
+              <a href="${escapedPhoneHref}" style="display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:#064e2f;color:#ffffff;font-size:14px;font-weight:800;text-decoration:none;">Call customer: ${escapeHtml(payload.phone)}</a>
+            </div>
+
+            <div style="margin-top:18px;padding:18px;border:1px solid #ddebd8;border-radius:14px;background:#ffffff;">
+              <h2 style="margin:0 0 8px;color:#064e2f;font-size:16px;">Lead/contact details</h2>
+              <table style="width:100%;border-collapse:collapse;">
+                <tbody>${leadDetailsRows}</tbody>
+              </table>
+            </div>
+
+            <div style="margin-top:18px;padding:18px;border:1px solid #ddebd8;border-radius:14px;background:#ffffff;">
+              <h2 style="margin:0 0 8px;color:#064e2f;font-size:16px;">Project details</h2>
+              <table style="width:100%;border-collapse:collapse;">
+                <tbody>${projectDetailsRows}</tbody>
+              </table>
+            </div>
+
+            <div style="margin-top:18px;padding:18px;border:1px solid #ddebd8;border-radius:14px;background:#f6fbf4;">
+              <h2 style="margin:0 0 10px;color:#064e2f;font-size:16px;">Additional Notes</h2>
+              <p style="margin:0;color:#102018;font-size:14px;white-space:pre-line;">${escapeHtml(additionalNotes)}</p>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid #ddebd8;background:#f6fbf4;padding:16px 28px;">
+            <p style="margin:0;color:#647067;font-size:12px;">This message was generated automatically from the ForwardSun Technology website.</p>
+          </div>
+        </div>
+      </div>
     </div>`;
 
   return { text, html };
@@ -101,6 +159,41 @@ export async function POST(request: Request) {
     );
   }
 
+  const averageMonthlyUnits = Number(valueFrom(body, "averageMonthlyUnits"));
+
+  if (!Number.isFinite(averageMonthlyUnits) || averageMonthlyUnits <= 0) {
+    return NextResponse.json(
+      {
+        error: "Average monthly units must be a positive number.",
+        fields: [fieldLabels.averageMonthlyUnits],
+      },
+      { status: 400 },
+    );
+  }
+
+  const customerType = valueFrom(body, "customerType");
+  const solutionRequired = valueFrom(body, "solutionRequired");
+
+  if (!customerTypes.includes(customerType)) {
+    return NextResponse.json(
+      {
+        error: "Invalid customer type.",
+        fields: [fieldLabels.customerType],
+      },
+      { status: 400 },
+    );
+  }
+
+  if (!consultationOptions.includes(solutionRequired)) {
+    return NextResponse.json(
+      {
+        error: "Invalid solution required.",
+        fields: [fieldLabels.solutionRequired],
+      },
+      { status: 400 },
+    );
+  }
+
   const resendApiKey = process.env.RESEND_API_KEY;
   const receiverEmail = process.env.LEAD_RECEIVER_EMAIL;
   const fromEmail = process.env.RESEND_FROM_EMAIL;
@@ -118,12 +211,11 @@ export async function POST(request: Request) {
   const lead: Required<LeadPayload> = {
     fullName: valueFrom(body, "fullName"),
     phone: valueFrom(body, "phone"),
-    email: valueFrom(body, "email"),
     area: valueFrom(body, "area"),
-    customerType: valueFrom(body, "customerType"),
-    billRange: valueFrom(body, "billRange"),
-    service: valueFrom(body, "service"),
-    message: valueFrom(body, "message"),
+    customerType,
+    averageMonthlyUnits: valueFrom(body, "averageMonthlyUnits"),
+    solutionRequired,
+    additionalNotes: valueFrom(body, "additionalNotes"),
   };
 
   const { text, html } = buildEmailContent(lead, submittedAt);
@@ -137,10 +229,9 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       from: fromEmail,
       to: [receiverEmail],
-      subject: `New solar assessment request from ${lead.fullName}`,
+      subject: `[ForwardSun] New Solar Assessment – ${lead.fullName} (${lead.area})`,
       text,
       html,
-      reply_to: lead.email || undefined,
     }),
   });
 

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { MessageCircle } from "lucide-react";
 import { BrandGroup } from "@/components/BrandGroup";
 import { ButtonLink } from "@/components/ButtonLink";
 import { ProductGroup } from "@/components/ProductGroup";
 import { ProductEcosystemVisual, ProductShowcaseVisual } from "@/components/SolarVisuals";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import {
   productEcosystem,
   productGroups,
@@ -44,14 +44,14 @@ export default function ProductsPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/contact" variant="primary">
-                Request Free Solar Assessment
+                Get Free Assessment
               </ButtonLink>
               <ButtonLink
                 href={whatsappLink("Hello ForwardSun Technology, I want to discuss products and solar components.")}
                 variant="outline"
-                icon={MessageCircle}
+                icon={WhatsAppIcon}
               >
-                Contact on WhatsApp
+                Chat on WhatsApp
               </ButtonLink>
             </div>
           </div>
@@ -163,14 +163,14 @@ export default function ProductsPage() {
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
             <ButtonLink href="/contact" variant="light">
-              Request Free Solar Assessment
+              Get Free Assessment
             </ButtonLink>
             <ButtonLink
               href={whatsappLink("Hello ForwardSun Technology, I need help selecting solar products.")}
               variant="light"
-              icon={MessageCircle}
+              icon={WhatsAppIcon}
             >
-              Contact on WhatsApp
+              Chat on WhatsApp
             </ButtonLink>
           </div>
         </div>

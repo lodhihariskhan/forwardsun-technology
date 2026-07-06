@@ -44,7 +44,7 @@ const ecosystemNodes = [
 ];
 
 const assessmentSteps = [
-  { label: "Bill review", icon: FileText },
+  { label: "Units review", icon: FileText },
   { label: "Site check", icon: ClipboardCheck },
   { label: "System sizing", icon: Gauge },
   { label: "Clear quote", icon: CheckCircle2 },

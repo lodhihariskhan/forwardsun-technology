@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Globe2, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ExternalLink, Globe2, MapPin, Phone } from "lucide-react";
+import { ContactLocationCard } from "@/components/ContactLocationCard";
 import { ContactForm } from "@/components/ContactForm";
 import { LogoMark } from "@/components/LogoMark";
 import { ContactAssessmentVisual } from "@/components/SolarVisuals";
+import { TrustSignals } from "@/components/TrustSignals";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact & Free Solar Assessment",
+  title: {
+    absolute: "Contact | ForwardSun Technology",
+  },
   description:
     "Request a free solar assessment or quotation from ForwardSun Technology. Contact by WhatsApp, phone, or the assessment form.",
   alternates: {
@@ -25,18 +30,19 @@ export default function ContactPage() {
               Free Solar Assessment
             </span>
             <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">
-              Request Your Free Solar Assessment
+              Contact
             </h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-charcoal/72">
-              Share a few details about your home or business so ForwardSun Technology can
-              understand your electricity usage, site needs, and preferred solar solution.
+              Need a solar solution for your home or business? Complete the assessment form below
+              and our solar consultant will review your requirements and recommend the most
+              suitable solution for your property.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.12em] text-charcoal/70">
               <span className="rounded-full border border-line bg-white px-3 py-2 shadow-sm">
                 Home & Business
               </span>
               <span className="rounded-full border border-line bg-white px-3 py-2 shadow-sm">
-                Bill Review
+                Unit Review
               </span>
               <span className="rounded-full border border-line bg-white px-3 py-2 shadow-sm">
                 Custom Quotation
@@ -62,53 +68,74 @@ export default function ContactPage() {
               </div>
             </div>
             <p className="mt-4 text-sm leading-7 text-white/72">
-              Prefer direct contact? Use WhatsApp or call to discuss your solar assessment.
+              Prefer direct contact? Call or chat on WhatsApp to discuss your solar assessment.
             </p>
             <div className="mt-8 grid gap-5">
+              <div className="relative rounded-2xl border border-white/10 bg-white/5 transition hover:border-solar">
+                <a href={site.callHref} className="flex gap-4 p-4 pr-24" aria-label={`Call ${site.callDisplay}`}>
+                  <Phone aria-hidden className="h-5 w-5 shrink-0 text-solar" />
+                  <span>
+                    <span className="block text-sm font-black">Call & WhatsApp</span>
+                    <span className="mt-1 block text-sm text-white/72">{site.callDisplay}</span>
+                  </span>
+                </a>
+                <div className="absolute right-3 top-1/2 flex -translate-y-1/2 gap-2">
+                  <a
+                    href={site.callHref}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-solar transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 focus:ring-offset-forest"
+                    aria-label={`Call ${site.callDisplay}`}
+                  >
+                    <Phone aria-hidden className="h-4 w-4" />
+                  </a>
+                  <a
+                    href={whatsappLink("Hello ForwardSun Technology, I want to request a free solar assessment.")}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-solar transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 focus:ring-offset-forest"
+                    aria-label="Chat on WhatsApp"
+                  >
+                    <WhatsAppIcon aria-hidden className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
               <a
-                href={whatsappLink("Hello ForwardSun Technology, I want to request a free solar assessment.")}
+                href={site.url}
                 target="_blank"
                 rel="noreferrer"
                 className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-solar"
               >
-                <MessageCircle aria-hidden className="h-5 w-5 shrink-0 text-solar" />
-                <span>
-                  <span className="block text-sm font-black">WhatsApp</span>
-                  <span className="mt-1 block text-sm text-white/72">{site.whatsappDisplay}</span>
-                </span>
-              </a>
-              <a
-                href={site.callHref}
-                className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-solar"
-              >
-                <Phone aria-hidden className="h-5 w-5 shrink-0 text-solar" />
-                <span>
-                  <span className="block text-sm font-black">Call</span>
-                  <span className="mt-1 block text-sm text-white/72">{site.callDisplay}</span>
-                </span>
-              </a>
-              <div className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
                 <Globe2 aria-hidden className="h-5 w-5 shrink-0 text-solar" />
                 <span>
                   <span className="block text-sm font-black">Website</span>
                   <span className="mt-1 block text-sm text-white/72">{site.domain}</span>
                 </span>
-              </div>
-              <div className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <ExternalLink aria-hidden className="ml-auto h-4 w-4 shrink-0 text-white/45" />
+              </a>
+              <a
+                href={site.mapHref}
+                target="_blank"
+                rel="noreferrer"
+                className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-solar"
+              >
                 <MapPin aria-hidden className="h-5 w-5 shrink-0 text-solar" />
                 <span>
                   <span className="block text-sm font-black">Location</span>
                   <span className="mt-1 block text-sm text-white/72">{site.location}</span>
                 </span>
-              </div>
+                <ExternalLink aria-hidden className="ml-auto h-4 w-4 shrink-0 text-white/45" />
+              </a>
             </div>
             <p className="mt-6 rounded-2xl border border-solar/20 bg-solar/10 p-4 text-sm leading-6 text-white/78">
-              For a more accurate estimate, our team may request your latest electricity bill or
-              monthly unit usage.
+              Our team will review your requirements and recommend the most suitable solar
+              solution for your property.
             </p>
           </aside>
         </div>
       </section>
+
+      <TrustSignals />
+
+      <ContactLocationCard />
     </>
   );
 }

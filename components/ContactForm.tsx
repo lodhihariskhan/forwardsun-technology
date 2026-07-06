@@ -1,45 +1,29 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { MessageCircle, Send } from "lucide-react";
-import { site, whatsappLink } from "@/lib/site";
-
-const billRanges = [
-  "Below PKR 25,000",
-  "PKR 25,000 - 50,000",
-  "PKR 50,000 - 100,000",
-  "PKR 100,000 - 200,000",
-  "Above PKR 200,000",
-];
-
-const services = [
-  "Residential Solar Solutions",
-  "Commercial Solar Solutions",
-  "Hybrid Solar & Battery Backup",
-  "EV Charger Installation",
-  "Maintenance & After-Sales Support",
-];
+import { Send } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { consultationOptions, customerTypes } from "@/lib/consultationOptions";
+import { whatsappLink } from "@/lib/site";
 
 type FormState = {
   fullName: string;
   phone: string;
-  email: string;
   area: string;
   customerType: string;
-  billRange: string;
-  service: string;
-  message: string;
+  averageMonthlyUnits: string;
+  solutionRequired: string;
+  additionalNotes: string;
 };
 
 const initialForm: FormState = {
   fullName: "",
   phone: "",
-  email: "",
   area: "",
-  customerType: "Home",
-  billRange: billRanges[1],
-  service: services[0],
-  message: "",
+  customerType: customerTypes[0],
+  averageMonthlyUnits: "",
+  solutionRequired: consultationOptions[0],
+  additionalNotes: "",
 };
 
 export function ContactForm() {
@@ -61,13 +45,21 @@ export function ContactForm() {
       form.phone,
       form.area,
       form.customerType,
-      form.billRange,
-      form.service,
+      form.averageMonthlyUnits,
+      form.solutionRequired,
     ];
 
     if (requiredValues.some((value) => !value.trim())) {
       setStatus("error");
-      setErrorMessage("Please complete your name, phone number, city or area, customer type, bill range, and interested service.");
+      setErrorMessage("Please complete your name, mobile number, area (Lahore), customer type, average monthly units, and solution required.");
+      return;
+    }
+
+    const monthlyUnits = Number(form.averageMonthlyUnits);
+
+    if (!Number.isFinite(monthlyUnits) || monthlyUnits <= 0) {
+      setStatus("error");
+      setErrorMessage("Average monthly units must be a positive number.");
       return;
     }
 
@@ -82,12 +74,11 @@ export function ContactForm() {
         body: JSON.stringify({
           fullName: form.fullName.trim(),
           phone: form.phone.trim(),
-          email: form.email.trim(),
           area: form.area.trim(),
           customerType: form.customerType,
-          billRange: form.billRange,
-          service: form.service,
-          message: form.message.trim(),
+          averageMonthlyUnits: form.averageMonthlyUnits.trim(),
+          solutionRequired: form.solutionRequired,
+          additionalNotes: form.additionalNotes.trim(),
         }),
       });
 
@@ -119,7 +110,7 @@ export function ContactForm() {
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-bold text-charcoal">
-          Full name
+          Full Name
           <input
             required
             aria-required="true"
@@ -130,7 +121,7 @@ export function ContactForm() {
           />
         </label>
         <label className="grid gap-2 text-sm font-bold text-charcoal">
-          Phone number
+          Mobile / WhatsApp Number
           <input
             required
             aria-required="true"
@@ -145,31 +136,18 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-bold text-charcoal">
-          Email optional
-          <input
-            value={form.email}
-            onChange={(event) => update("email", event.target.value)}
-            className="h-12 rounded-xl border border-line bg-mist px-4 font-normal outline-none transition focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
-            placeholder="name@example.com"
-            type="email"
-          />
-        </label>
-        <label className="grid gap-2 text-sm font-bold text-charcoal">
-          City / Area
+          Area (Lahore)
           <input
             required
             aria-required="true"
             value={form.area}
             onChange={(event) => update("area", event.target.value)}
             className="h-12 rounded-xl border border-line bg-mist px-4 font-normal outline-none transition focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
-            placeholder="DHA Rahbar, Lahore"
+            placeholder="Example: DHA Rahbar"
           />
         </label>
-      </div>
-
-      <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-bold text-charcoal">
-          Customer type
+          Customer Type
           <select
             required
             aria-required="true"
@@ -177,63 +155,85 @@ export function ContactForm() {
             onChange={(event) => update("customerType", event.target.value)}
             className="h-12 rounded-xl border border-line bg-mist px-4 font-normal outline-none transition focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
           >
-            <option>Home</option>
-            <option>Business</option>
+            {customerTypes.map((type) => (
+              <option key={type}>{type}</option>
+            ))}
           </select>
         </label>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-bold text-charcoal">
-          Monthly electricity bill range
+          Average Monthly Units
+          <input
+            required
+            aria-required="true"
+            value={form.averageMonthlyUnits}
+            onChange={(event) => update("averageMonthlyUnits", event.target.value)}
+            className="h-12 rounded-xl border border-line bg-mist px-4 font-normal outline-none transition focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
+            min="1"
+            placeholder="Example: 650"
+            type="number"
+          />
+          <span className="text-xs font-semibold text-charcoal/60">
+            You can find your monthly units on your electricity bill.
+          </span>
+        </label>
+        <label className="grid gap-2 text-sm font-bold text-charcoal">
+          Solution Required
           <select
             required
             aria-required="true"
-            value={form.billRange}
-            onChange={(event) => update("billRange", event.target.value)}
+            value={form.solutionRequired}
+            onChange={(event) => update("solutionRequired", event.target.value)}
             className="h-12 rounded-xl border border-line bg-mist px-4 font-normal outline-none transition focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
           >
-            {billRanges.map((range) => (
-              <option key={range}>{range}</option>
+            {consultationOptions.map((option) => (
+              <option key={option}>{option}</option>
             ))}
           </select>
         </label>
       </div>
 
       <label className="grid gap-2 text-sm font-bold text-charcoal">
-        Interested service
-        <select
-          required
-          aria-required="true"
-          value={form.service}
-          onChange={(event) => update("service", event.target.value)}
-          className="h-12 rounded-xl border border-line bg-mist px-4 font-normal outline-none transition focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
-        >
-          {services.map((service) => (
-            <option key={service}>{service}</option>
-          ))}
-        </select>
-      </label>
-
-      <label className="grid gap-2 text-sm font-bold text-charcoal">
-        Message
+        Additional Notes
         <textarea
-          value={form.message}
-          onChange={(event) => update("message", event.target.value)}
+          value={form.additionalNotes}
+          onChange={(event) => update("additionalNotes", event.target.value)}
           className="min-h-32 rounded-xl border border-line bg-mist px-4 py-3 font-normal outline-none transition focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
           placeholder="Tell us about your site, backup needs, or current system."
         />
       </label>
 
       <p className="rounded-2xl border border-line bg-sunsoft p-4 text-sm leading-6 text-charcoal/70">
-        For a more accurate estimate, our team may request your latest electricity bill or monthly
-        unit usage.
+        Our team will review your requirements and recommend the most suitable solar solution for
+        your property.
       </p>
 
       {status === "success" ? (
-        <p
+        <div
           role="status"
-          className="rounded-2xl border border-forest/20 bg-forest/10 p-4 text-sm font-bold leading-6 text-forest"
+          className="rounded-2xl border border-forest/20 bg-forest/10 p-4 text-sm leading-6 text-forest"
         >
-          Thank you. Your solar assessment request has been received. Our team will contact you shortly.
-        </p>
+          <h3 className="text-base font-black">Assessment Request Received</h3>
+          <p className="mt-2 font-bold">Thank you for contacting ForwardSun Technology.</p>
+          <p className="mt-2 text-forest/82">
+            Our solar consultant will review your requirements and contact you shortly to recommend
+            the most suitable solar solution.
+          </p>
+          <p className="mt-2 text-forest/82">
+            If your request is urgent, you can also chat with us on WhatsApp.
+          </p>
+          <a
+            href={whatsappLink("Hello ForwardSun Technology, I submitted an assessment request and need urgent help.")}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-forest px-5 py-2 text-sm font-black text-white shadow-card transition hover:bg-deep focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2"
+          >
+            <WhatsAppIcon aria-hidden className="h-4 w-4" />
+            Chat on WhatsApp
+          </a>
+        </div>
       ) : null}
 
       {status === "error" ? (
@@ -252,7 +252,7 @@ export function ContactForm() {
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-bold text-white shadow-card transition hover:-translate-y-0.5 hover:bg-deep hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:bg-forest disabled:hover:shadow-card"
         >
           <Send aria-hidden className="h-4 w-4" />
-          {status === "loading" ? "Sending..." : "Request Free Solar Assessment"}
+          {status === "loading" ? "Sending..." : "Get Free Assessment"}
         </button>
         <a
           href={whatsappLink("Hello ForwardSun Technology, I want to request a free solar quote.")}
@@ -260,8 +260,8 @@ export function ContactForm() {
           rel="noreferrer"
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-white px-5 py-3 text-sm font-bold text-forest shadow-sm transition hover:-translate-y-0.5 hover:border-solar hover:bg-sunsoft hover:shadow-card focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2"
         >
-          <MessageCircle aria-hidden className="h-4 w-4" />
-          WhatsApp {site.whatsappDisplay}
+          <WhatsAppIcon aria-hidden className="h-4 w-4" />
+          Chat on WhatsApp
         </a>
       </div>
     </form>

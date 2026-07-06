@@ -15,11 +15,11 @@ export function TestimonialPlaceholder() {
             Reviews
           </span>
           <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
-            Trusted by Homeowners & Businesses
+            Verified Reviews & Project Media
           </h2>
           <p className="mt-4 text-base leading-7 text-charcoal/70">
-            Client reviews, project photos, and video testimonials will be added as completed
-            installations grow.
+            ForwardSun will publish customer reviews, project photos, and video testimonials only
+            after installations are completed and approved for sharing.
           </p>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -33,7 +33,8 @@ export function TestimonialPlaceholder() {
               </div>
               <h3 className="mt-5 text-lg font-black text-charcoal">{title}</h3>
               <p className="mt-3 text-sm leading-7 text-charcoal/65">
-                Reserved for verified customer material from completed ForwardSun installations.
+                Reserved for verified customer material from completed ForwardSun installations,
+                without placeholder claims or invented reviews.
               </p>
             </div>
           ))}

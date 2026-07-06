@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, Globe2, MapPin, Phone } from "lucide-react";
 import { LogoMark } from "@/components/LogoMark";
-import { footerProducts, footerServices, navItems, site, whatsappLink } from "@/lib/site";
+import { footerProducts, footerServices, navItems, site } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -20,7 +20,8 @@ export function Footer() {
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-7 text-white/72">
             Reliable solar energy solutions for homes and businesses, planned with practical
-            assessment, clean installation, and long-term support.
+            assessment, clear product options, professional installation, warranty guidance, and
+            long-term support in Lahore.
           </p>
         </div>
 
@@ -59,27 +60,25 @@ export function Footer() {
           <h2 className="text-sm font-black uppercase tracking-[0.16em] text-solar">Contact</h2>
           <ul className="mt-5 grid gap-4 text-sm text-white/72">
             <li className="flex gap-3">
-              <MessageCircle aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />
-              <a
-                href={whatsappLink("Hello ForwardSun Technology, I want to request a solar assessment.")}
-                target="_blank"
-                rel="noreferrer"
-                className="transition hover:text-white"
-              >
-                WhatsApp: {site.whatsappDisplay}
-              </a>
-            </li>
-            <li className="flex gap-3">
               <Phone aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />
               <a href={site.callHref} className="transition hover:text-white">
-                Call: {site.callDisplay}
+                Phone / WhatsApp: {site.callDisplay}
               </a>
             </li>
             <li className="flex gap-3">
               <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />
               <span>{site.location}</span>
             </li>
-            <li>{site.domain}</li>
+            <li className="flex gap-3">
+              <Globe2 aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />
+              <a href={site.url} className="transition hover:text-white">
+                {site.domain}
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <Clock aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />
+              <span>{site.workingHours}</span>
+            </li>
           </ul>
         </div>
       </div>

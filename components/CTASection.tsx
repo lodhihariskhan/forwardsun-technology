@@ -1,5 +1,5 @@
-import { MessageCircle } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { whatsappLink } from "@/lib/site";
 
 type CTASectionProps = {
@@ -8,7 +8,7 @@ type CTASectionProps = {
 };
 
 export function CTASection({
-  title = "Request Your Free Solar Assessment",
+  title = "Get Your Free Solar Assessment",
   text = "Get a professionally planned solar solution for your home or business.",
 }: CTASectionProps) {
   return (
@@ -25,14 +25,14 @@ export function CTASection({
         </div>
         <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
           <ButtonLink href="/contact" variant="light">
-            Request Free Solar Assessment
+            Get Free Assessment
           </ButtonLink>
           <ButtonLink
             href={whatsappLink("Hello ForwardSun Technology, I want a free solar assessment.")}
             variant="light"
-            icon={MessageCircle}
+            icon={WhatsAppIcon}
           >
-            Contact on WhatsApp
+            Chat on WhatsApp
           </ButtonLink>
         </div>
       </div>

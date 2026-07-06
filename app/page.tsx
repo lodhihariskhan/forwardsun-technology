@@ -19,7 +19,6 @@ import { FAQSection } from "@/components/FAQSection";
 import { HomeEcosystemImage, HomeHeroVisual } from "@/components/SolarVisuals";
 import { PlanningReassurance } from "@/components/PlanningReassurance";
 import { RecentProjects } from "@/components/RecentProjects";
-import { TestimonialPlaceholder } from "@/components/TestimonialPlaceholder";
 import { TrustSignals } from "@/components/TrustSignals";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { productPreviewCategories } from "@/lib/products";
@@ -337,8 +336,6 @@ export default function HomePage() {
           </ol>
         </div>
       </section>
-
-      <TestimonialPlaceholder />
 
       <RecentProjects />
 

@@ -324,7 +324,13 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-            <ButtonLink href="/contact" className="mt-7" variant="primary">
+            <ButtonLink
+              href="/contact"
+              className="mt-7"
+              variant="primary"
+              trackingEvent="get_free_assessment_click"
+              trackingLocation="hero"
+            >
               Start Your Assessment
             </ButtonLink>
           </div>

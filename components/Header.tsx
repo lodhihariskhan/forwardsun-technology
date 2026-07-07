@@ -7,7 +7,7 @@ import { useState } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { LogoMark } from "@/components/LogoMark";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackGetFreeAssessmentClick, trackWhatsAppClick } from "@/lib/analytics";
 import { navItems, whatsappLink } from "@/lib/site";
 
 export function Header() {
@@ -21,6 +21,7 @@ export function Header() {
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 rounded-full px-3 py-1 text-center font-black uppercase tracking-[0.06em] text-white transition hover:text-solar focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 focus:ring-offset-forest sm:tracking-[0.14em]"
+            onClick={() => trackGetFreeAssessmentClick("header_announcement")}
           >
             <Sparkles aria-hidden className="hidden h-3.5 w-3.5 text-solar sm:block" />
             Reduce Bills. Improve Backup. Install with Confidence.

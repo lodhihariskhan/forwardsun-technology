@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Clock, Globe2, MapPin, Phone } from "lucide-react";
 import { LogoMark } from "@/components/LogoMark";
+import { TrackedAnchor } from "@/components/TrackedAnchor";
 import { footerProducts, footerServices, navItems, site } from "@/lib/site";
 
 export function Footer() {
@@ -61,9 +62,14 @@ export function Footer() {
           <ul className="mt-5 grid gap-4 text-sm text-white/72">
             <li className="flex gap-3">
               <Phone aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />
-              <a href={site.callHref} className="transition hover:text-white">
+              <TrackedAnchor
+                href={site.callHref}
+                className="transition hover:text-white"
+                trackingEvent="phone_click"
+                trackingLocation="footer"
+              >
                 Phone / WhatsApp: {site.callDisplay}
-              </a>
+              </TrackedAnchor>
             </li>
             <li className="flex gap-3">
               <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />

@@ -24,13 +24,20 @@ export function CTASection({
           <p className="mt-4 text-base leading-7 text-white/74">{text}</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
-          <ButtonLink href="/contact" variant="light">
+          <ButtonLink
+            href="/contact"
+            variant="light"
+            trackingEvent="get_free_assessment_click"
+            trackingLocation="cta_section"
+          >
             Get Free Assessment
           </ButtonLink>
           <ButtonLink
             href={whatsappLink("Hello ForwardSun Technology, I want a free solar assessment.")}
             variant="light"
-            icon={WhatsAppIcon}
+            icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
+            trackingEvent="whatsapp_click"
+            trackingLocation="cta_section"
           >
             Chat on WhatsApp
           </ButtonLink>

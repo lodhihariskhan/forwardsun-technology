@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { Send } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { trackContactFormSubmit, trackWhatsAppClick } from "@/lib/analytics";
 import { consultationOptions, customerTypes } from "@/lib/consultationOptions";
 import { whatsappLink } from "@/lib/site";
 
@@ -85,6 +86,13 @@ export function ContactForm() {
       if (!response.ok) {
         throw new Error("Failed to submit contact form");
       }
+
+      trackContactFormSubmit({
+        customerType: form.customerType,
+        solutionRequired: form.solutionRequired,
+        area: form.area.trim(),
+        averageMonthlyUnits: form.averageMonthlyUnits.trim(),
+      });
 
       setForm(initialForm);
       setStatus("success");
@@ -231,6 +239,7 @@ export function ContactForm() {
             target="_blank"
             rel="noreferrer"
             className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-forest px-5 py-2 text-sm font-black text-white shadow-card transition hover:bg-deep focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2"
+            onClick={() => trackWhatsAppClick("success_box")}
           >
             <WhatsAppIcon aria-hidden className="h-4 w-4" />
             Chat on WhatsApp
@@ -262,6 +271,7 @@ export function ContactForm() {
             target="_blank"
             rel="noreferrer"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-white px-5 py-3 text-sm font-bold text-forest shadow-sm transition hover:-translate-y-0.5 hover:border-solar hover:bg-sunsoft hover:shadow-card focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2"
+            onClick={() => trackWhatsAppClick("contact_form")}
           >
             <WhatsAppIcon aria-hidden className="h-4 w-4" />
             Chat on WhatsApp

@@ -43,13 +43,20 @@ export default function ProductsPage() {
               performance needs.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/contact" variant="primary">
+              <ButtonLink
+                href="/contact"
+                variant="primary"
+                trackingEvent="get_free_assessment_click"
+                trackingLocation="hero"
+              >
                 Get Free Assessment
               </ButtonLink>
               <ButtonLink
                 href={whatsappLink("Hello ForwardSun Technology, I want to discuss products and solar components.")}
                 variant="outline"
-                icon={WhatsAppIcon}
+                icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
+                trackingEvent="whatsapp_click"
+                trackingLocation="hero"
               >
                 Chat on WhatsApp
               </ButtonLink>
@@ -162,13 +169,20 @@ export default function ProductsPage() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
-            <ButtonLink href="/contact" variant="light">
+            <ButtonLink
+              href="/contact"
+              variant="light"
+              trackingEvent="get_free_assessment_click"
+              trackingLocation="products_cta"
+            >
               Get Free Assessment
             </ButtonLink>
             <ButtonLink
               href={whatsappLink("Hello ForwardSun Technology, I need help selecting solar products.")}
               variant="light"
-              icon={WhatsAppIcon}
+              icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
+              trackingEvent="whatsapp_click"
+              trackingLocation="products_cta"
             >
               Chat on WhatsApp
             </ButtonLink>

@@ -66,13 +66,20 @@ export default function ServicesPage() {
               and future energy goals.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/contact" variant="primary">
+              <ButtonLink
+                href="/contact"
+                variant="primary"
+                trackingEvent="get_free_assessment_click"
+                trackingLocation="hero"
+              >
                 Get Free Assessment
               </ButtonLink>
               <ButtonLink
                 href={whatsappLink("Hello ForwardSun Technology, I want to discuss solar services.")}
                 variant="outline"
-                icon={WhatsAppIcon}
+                icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
+                trackingEvent="whatsapp_click"
+                trackingLocation="hero"
               >
                 Chat on WhatsApp
               </ButtonLink>
@@ -120,13 +127,20 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
-            <ButtonLink href="/contact" variant="primary">
+            <ButtonLink
+              href="/contact"
+              variant="primary"
+              trackingEvent="get_free_assessment_click"
+              trackingLocation="services_cta"
+            >
               Get Free Assessment
             </ButtonLink>
             <ButtonLink
               href={whatsappLink("Hello ForwardSun Technology, I am not sure which solar service I need.")}
               variant="outline"
-              icon={WhatsAppIcon}
+              icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
+              trackingEvent="whatsapp_click"
+              trackingLocation="services_cta"
             >
               Chat on WhatsApp
             </ButtonLink>
@@ -203,7 +217,13 @@ function ServiceSection({
         <div className="mt-4 rounded-3xl border border-solar/25 bg-sunsoft p-6">
           <h3 className="text-sm font-black uppercase tracking-[0.14em] text-forest">Outcome</h3>
           <p className="mt-3 text-base font-bold leading-7 text-charcoal/78">{service.outcome}</p>
-          <ButtonLink href="/contact" className="mt-5" variant="primary">
+          <ButtonLink
+            href="/contact"
+            className="mt-5"
+            variant="primary"
+            trackingEvent="get_free_assessment_click"
+            trackingLocation="service_outcome"
+          >
             Get Free Assessment
           </ButtonLink>
         </div>

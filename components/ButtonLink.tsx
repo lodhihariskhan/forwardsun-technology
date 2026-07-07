@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
-import type { ComponentType, ReactNode, SVGProps } from "react";
+import type { ReactNode } from "react";
+import { trackGetFreeAssessmentClick, trackWhatsAppClick } from "@/lib/analytics";
 
 type ButtonLinkProps = {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary" | "outline" | "light";
-  icon?: ComponentType<SVGProps<SVGSVGElement>>;
+  icon?: ReactNode;
   className?: string;
+  trackingEvent?: "get_free_assessment_click" | "whatsapp_click";
+  trackingLocation?: string;
 };
 
 const variants = {
@@ -21,11 +26,25 @@ export function ButtonLink({
   href,
   children,
   variant = "primary",
-  icon: Icon,
+  icon,
   className = "",
+  trackingEvent,
+  trackingLocation,
 }: ButtonLinkProps) {
   const isExternal = href.startsWith("http") || href.startsWith("tel:");
   const classes = `inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-black transition duration-200 focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 ${variants[variant]} ${className}`;
+
+  function handleClick() {
+    if (!trackingEvent || !trackingLocation) {
+      return;
+    }
+
+    if (trackingEvent === "get_free_assessment_click") {
+      trackGetFreeAssessmentClick(trackingLocation);
+    } else {
+      trackWhatsAppClick(trackingLocation);
+    }
+  }
 
   if (isExternal) {
     return (
@@ -34,16 +53,17 @@ export function ButtonLink({
         className={classes}
         target={href.startsWith("http") ? "_blank" : undefined}
         rel={href.startsWith("http") ? "noreferrer" : undefined}
+        onClick={handleClick}
       >
-        {Icon ? <Icon aria-hidden className="h-4 w-4 shrink-0" /> : null}
+        {icon}
         {children}
       </a>
     );
   }
 
   return (
-    <Link href={href} className={classes}>
-      {Icon ? <Icon aria-hidden className="h-4 w-4 shrink-0" /> : null}
+    <Link href={href} className={classes} onClick={handleClick}>
+      {icon}
       {children}
     </Link>
   );

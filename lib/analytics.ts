@@ -1,20 +1,12 @@
-type GtagEventParameters = {
-  event_category?: string;
-  event_label?: string;
-  value?: number;
-};
+type EventParams = Record<string, string | number | boolean | undefined>;
 
 declare global {
   interface Window {
-    gtag?: (
-      command: "event",
-      eventName: string,
-      parameters?: GtagEventParameters,
-    ) => void;
+    gtag?: (command: "event", eventName: string, parameters?: EventParams) => void;
   }
 }
 
-export function trackEvent(eventName: string, parameters?: GtagEventParameters) {
+function trackEvent(eventName: string, parameters?: EventParams) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") {
     return;
   }
@@ -22,25 +14,30 @@ export function trackEvent(eventName: string, parameters?: GtagEventParameters) 
   window.gtag("event", eventName, parameters);
 }
 
-export function trackLeadFormSubmission() {
-  trackEvent("generate_lead", {
-    event_category: "lead",
-    event_label: "contact_form",
+export type ContactFormSubmitPayload = {
+  customerType: string;
+  solutionRequired: string;
+  area: string;
+  averageMonthlyUnits: string;
+};
+
+export function trackContactFormSubmit(payload: ContactFormSubmitPayload) {
+  trackEvent("contact_form_submit", {
+    customer_type: payload.customerType,
+    solution_required: payload.solutionRequired,
+    area: payload.area,
+    average_monthly_units: payload.averageMonthlyUnits,
   });
 }
 
-export function trackWhatsAppClick(label = "whatsapp") {
-  trackEvent("whatsapp_click", {
-    event_category: "engagement",
-    event_label: label,
-  });
+export function trackWhatsAppClick(buttonLocation: string) {
+  trackEvent("whatsapp_click", { button_location: buttonLocation });
 }
 
-export function trackGetFreeAssessmentClick(label = "get_free_assessment") {
-  trackEvent("get_free_assessment_click", {
-    event_category: "cta",
-    event_label: label,
-  });
+export function trackPhoneClick(buttonLocation: string) {
+  trackEvent("phone_click", { button_location: buttonLocation });
 }
 
-export {};
+export function trackGetFreeAssessmentClick(buttonLocation: string) {
+  trackEvent("get_free_assessment_click", { button_location: buttonLocation });
+}

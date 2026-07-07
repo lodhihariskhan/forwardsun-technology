@@ -44,7 +44,12 @@ export default function AboutPage() {
               The focus is simple: understand the site, review usage needs, recommend reliable
               product options, and provide a transparent quotation before installation begins.
             </p>
-            <ButtonLink href="/contact" className="mt-8">
+            <ButtonLink
+              href="/contact"
+              className="mt-8"
+              trackingEvent="get_free_assessment_click"
+              trackingLocation="hero"
+            >
               Get Free Assessment
             </ButtonLink>
           </div>

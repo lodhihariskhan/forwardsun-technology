@@ -4,6 +4,7 @@ import { ContactLocationCard } from "@/components/ContactLocationCard";
 import { ContactForm } from "@/components/ContactForm";
 import { LogoMark } from "@/components/LogoMark";
 import { ContactAssessmentVisual } from "@/components/SolarVisuals";
+import { TrackedAnchor } from "@/components/TrackedAnchor";
 import { TrustSignals } from "@/components/TrustSignals";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { site, whatsappLink } from "@/lib/site";
@@ -72,30 +73,40 @@ export default function ContactPage() {
             </p>
             <div className="mt-8 grid gap-5">
               <div className="relative rounded-2xl border border-white/10 bg-white/5 transition hover:border-solar">
-                <a href={site.callHref} className="flex gap-4 p-4 pr-24" aria-label={`Call ${site.callDisplay}`}>
+                <TrackedAnchor
+                  href={site.callHref}
+                  className="flex gap-4 p-4 pr-24"
+                  aria-label={`Call ${site.callDisplay}`}
+                  trackingEvent="phone_click"
+                  trackingLocation="contact_page"
+                >
                   <Phone aria-hidden className="h-5 w-5 shrink-0 text-solar" />
                   <span>
                     <span className="block text-sm font-black">Call & WhatsApp</span>
                     <span className="mt-1 block text-sm text-white/72">{site.callDisplay}</span>
                   </span>
-                </a>
+                </TrackedAnchor>
                 <div className="absolute right-3 top-1/2 flex -translate-y-1/2 gap-2">
-                  <a
+                  <TrackedAnchor
                     href={site.callHref}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-solar transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 focus:ring-offset-forest"
                     aria-label={`Call ${site.callDisplay}`}
+                    trackingEvent="phone_click"
+                    trackingLocation="contact_page"
                   >
                     <Phone aria-hidden className="h-4 w-4" />
-                  </a>
-                  <a
+                  </TrackedAnchor>
+                  <TrackedAnchor
                     href={whatsappLink("Hello ForwardSun Technology, I want to request a free solar assessment.")}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-solar transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2 focus:ring-offset-forest"
                     aria-label="Chat on WhatsApp"
+                    trackingEvent="whatsapp_click"
+                    trackingLocation="contact_page"
                   >
                     <WhatsAppIcon aria-hidden className="h-4 w-4" />
-                  </a>
+                  </TrackedAnchor>
                 </div>
               </div>
               <a

@@ -1,0 +1,50 @@
+---
+description: ForwardSun Technology business context and development/tracking/git rules
+alwaysApply: true
+---
+
+# ForwardSun Technology Project Rules
+
+Production Next.js + TypeScript + Tailwind website for ForwardSun Technology, a solar
+energy business focused on Lahore.
+
+## Business Details
+
+- Business name: ForwardSun Technology
+- Domain: forwardsuntechnology.com / www.forwardsuntechnology.com
+- Location: DHA Rahbar, Lahore
+- Service area: Lahore, Pakistan
+- Phone / WhatsApp: +92 330 5259922
+- Main CTA: "Get Free Assessment"
+- Contact form goal: solar assessment leads
+- Lead email receiver: hariskhan@forwardsuntechnology.com
+
+## Development Rules
+
+- Do not redesign the website unless explicitly asked.
+- Do not change branding, layout direction, colors, or navigation without approval.
+- Do not change contact form fields unless explicitly asked.
+- Do not change API/email/Resend logic unless the task requires it.
+- Always keep the website production-ready.
+- Always preserve mobile responsiveness.
+- Always use TypeScript-safe code.
+- Never hardcode secrets.
+- Environment variables must stay in `.env.example` as placeholders only.
+- After code changes, run:
+  ```
+  npm run lint
+  npm run typecheck
+  npm run build
+  ```
+
+## Tracking Rules
+
+- GA4 uses `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+- Do not hardcode the GA4 Measurement ID in code.
+- Track lead-generation actions carefully.
+
+## Git Rules
+
+- Make small, focused changes.
+- Do not mix unrelated tasks.
+- Before commit, explain files changed and why.

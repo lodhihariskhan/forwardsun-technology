@@ -99,13 +99,20 @@ export default function HomePage() {
               selection, clean installation, and long-term after-sales support.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/contact" variant="primary">
+              <ButtonLink
+                href="/contact"
+                variant="primary"
+                trackingEvent="get_free_assessment_click"
+                trackingLocation="hero"
+              >
                 Get Free Assessment
               </ButtonLink>
               <ButtonLink
                 href={whatsappLink("Hello ForwardSun Technology, I want to discuss a solar solution.")}
                 variant="outline"
-                icon={WhatsAppIcon}
+                icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
+                trackingEvent="whatsapp_click"
+                trackingLocation="hero"
               >
                 Chat on WhatsApp
               </ButtonLink>

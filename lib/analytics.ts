@@ -1,3 +1,5 @@
+import { trackMetaContact, trackMetaLead } from "@/lib/metaPixel";
+
 type EventParams = Record<string, string | number | boolean | undefined>;
 
 declare global {
@@ -28,14 +30,20 @@ export function trackContactFormSubmit(payload: ContactFormSubmitPayload) {
     area: payload.area,
     average_monthly_units: payload.averageMonthlyUnits,
   });
+  trackMetaLead({
+    customer_type: payload.customerType,
+    solution_required: payload.solutionRequired,
+  });
 }
 
 export function trackWhatsAppClick(buttonLocation: string) {
   trackEvent("whatsapp_click", { button_location: buttonLocation });
+  trackMetaContact({ method: "whatsapp", button_location: buttonLocation });
 }
 
 export function trackPhoneClick(buttonLocation: string) {
   trackEvent("phone_click", { button_location: buttonLocation });
+  trackMetaContact({ method: "phone", button_location: buttonLocation });
 }
 
 export function trackGetFreeAssessmentClick(buttonLocation: string) {

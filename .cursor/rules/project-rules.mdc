@@ -6,16 +6,18 @@ alwaysApply: true
 # ForwardSun Technology Project Rules
 
 Production Next.js + TypeScript + Tailwind website for ForwardSun Technology, a solar
-energy business focused on Lahore.
+energy business located in Lahore and serving customers across Lahore.
 
 ## Business Details
 
 - Business name: ForwardSun Technology
 - Domain: forwardsuntechnology.com / www.forwardsuntechnology.com
-- Location: DHA Rahbar, Lahore
+- Location: Lahore, Pakistan
+- Office / local reference: DHA Rahbar, Lahore
 - Service area: Lahore, Pakistan
 - Phone / WhatsApp: +92 330 5259922
 - Main CTA: "Get Free Assessment"
+- Secondary CTA: "Chat on WhatsApp"
 - Contact form goal: solar assessment leads
 - Lead email receiver: hariskhan@forwardsuntechnology.com
 
@@ -37,11 +39,20 @@ energy business focused on Lahore.
   npm run build
   ```
 
+
 ## Tracking Rules
 
 - GA4 uses `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
-- Do not hardcode the GA4 Measurement ID in code.
+- Meta Pixel uses `NEXT_PUBLIC_META_PIXEL_ID`.
+- Do not hardcode GA4 Measurement ID or Meta Pixel ID in code.
+- If a tracking environment variable is missing, tracking should fail silently and never break the website.
+- Preserve existing GA4 tracking when adding or editing Meta Pixel.
+- Preserve existing Meta Pixel tracking when editing analytics code.
 - Track lead-generation actions carefully.
+- Contact form successful submission should trigger:
+- GA4 lead conversion event
+- Meta Pixel `Lead` event
+- Prevent obvious duplicate lead events from a single successful form submission.
 
 ## Git Rules
 

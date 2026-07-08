@@ -44,6 +44,15 @@ export default function PrivacyPage() {
           </div>
 
           <div>
+            <h2 className="text-lg font-black text-charcoal">Analytics and advertising tools</h2>
+            <p className="mt-2">
+              We may use tools such as Google Analytics and Meta Pixel to understand website activity,
+              measure campaign performance, and improve our services. These tools may use cookies or
+              similar technologies.
+            </p>
+          </div>
+
+          <div>
             <h2 className="text-lg font-black text-charcoal">Data sharing</h2>
             <p className="mt-2">
               We do not sell your personal information. Your details are only used for consultation

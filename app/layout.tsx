@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { MetaPixel } from "@/components/MetaPixel";
 import { services, site } from "@/lib/site";
 
 const inter = Inter({
@@ -14,6 +15,7 @@ const inter = Inter({
 });
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -99,6 +101,7 @@ export default function RootLayout({
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <MetaPixel pixelId={metaPixelId} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}

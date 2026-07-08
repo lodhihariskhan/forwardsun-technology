@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { Send } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { trackContactFormSubmit, trackWhatsAppClick } from "@/lib/analytics";
+import { trackContactFormSubmit, trackMetaLead, trackWhatsAppClick } from "@/lib/analytics";
 import { consultationOptions, customerTypes } from "@/lib/consultationOptions";
 import { whatsappLink } from "@/lib/site";
 
@@ -96,6 +96,7 @@ export function ContactForm() {
         area: form.area.trim(),
         averageMonthlyUnits: form.averageMonthlyUnits.trim(),
       });
+      trackMetaLead();
 
       setForm(initialForm);
       setStatus("success");

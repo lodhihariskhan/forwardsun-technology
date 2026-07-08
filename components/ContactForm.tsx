@@ -15,6 +15,7 @@ type FormState = {
   averageMonthlyUnits: string;
   solutionRequired: string;
   additionalNotes: string;
+  website: string;
 };
 
 const initialForm: FormState = {
@@ -25,6 +26,7 @@ const initialForm: FormState = {
   averageMonthlyUnits: "",
   solutionRequired: consultationOptions[0],
   additionalNotes: "",
+  website: "",
 };
 
 export function ContactForm() {
@@ -80,6 +82,7 @@ export function ContactForm() {
           averageMonthlyUnits: form.averageMonthlyUnits.trim(),
           solutionRequired: form.solutionRequired,
           additionalNotes: form.additionalNotes.trim(),
+          website: form.website.trim(),
         }),
       });
 
@@ -107,6 +110,21 @@ export function ContactForm() {
       onSubmit={submit}
       className="grid gap-5 rounded-3xl border border-line bg-white p-5 shadow-premium sm:p-7"
     >
+      <div className="pointer-events-none absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+        <label htmlFor="website">
+          Website
+          <input
+            id="website"
+            name="website"
+            value={form.website}
+            onChange={(event) => update("website", event.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+        </label>
+      </div>
+
       <div className="border-b border-line pb-5">
         <p className="text-sm font-black uppercase tracking-[0.18em] text-forest">
           Assessment Request

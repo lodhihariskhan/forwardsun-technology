@@ -30,7 +30,11 @@ export function Footer() {
           <h2 className="text-sm font-black uppercase tracking-[0.16em] text-solar">Services</h2>
           <ul className="mt-5 grid gap-3 text-sm text-white/72">
             {footerServices.map((service) => (
-              <li key={service}>{service}</li>
+              <li key={service}>
+                <Link href="/services" className="transition hover:text-white">
+                  {service}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -39,7 +43,11 @@ export function Footer() {
           <h2 className="text-sm font-black uppercase tracking-[0.16em] text-solar">Products</h2>
           <ul className="mt-5 grid gap-3 text-sm text-white/72">
             {footerProducts.map((product) => (
-              <li key={product}>{product}</li>
+              <li key={product}>
+                <Link href="/products" className="transition hover:text-white">
+                  {product}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -54,6 +62,16 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/privacy" className="transition hover:text-white">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="transition hover:text-white">
+                Terms & Conditions
+              </Link>
+            </li>
           </ul>
         </div>
 

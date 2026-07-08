@@ -9,7 +9,10 @@ type LeadPayload = {
   averageMonthlyUnits?: string;
   solutionRequired?: string;
   additionalNotes?: string;
+  website?: string;
 };
+
+type LeadEmailPayload = Required<Omit<LeadPayload, "website">>;
 
 const requiredFields: Array<keyof LeadPayload> = [
   "fullName",
@@ -28,7 +31,12 @@ const fieldLabels: Record<keyof LeadPayload, string> = {
   averageMonthlyUnits: "Average Monthly Units",
   solutionRequired: "Solution Required",
   additionalNotes: "Additional Notes",
+  website: "Website",
 };
+
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const requestCountByIp = new Map<string, { count: number; windowStart: number }>();
 
 function valueFrom(payload: LeadPayload, field: keyof LeadPayload) {
   return typeof payload[field] === "string" ? payload[field].trim() : "";
@@ -51,7 +59,34 @@ function detailRow(label: string, value: string) {
     </tr>`;
 }
 
-function buildEmailContent(payload: Required<LeadPayload>, submittedAt: string) {
+function getClientIp(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0]?.trim() ?? "";
+  }
+
+  return request.headers.get("x-real-ip")?.trim() ?? "";
+}
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const record = requestCountByIp.get(ip);
+
+  if (!record || now - record.windowStart > RATE_LIMIT_WINDOW_MS) {
+    requestCountByIp.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return true;
+  }
+
+  record.count += 1;
+  requestCountByIp.set(ip, record);
+  return false;
+}
+
+function buildEmailContent(payload: LeadEmailPayload, submittedAt: string) {
   const additionalNotes = payload.additionalNotes || "No additional notes provided.";
   const escapedPhoneHref = escapeHtml(`tel:${payload.phone}`);
   const leadDetailsRows = [
@@ -139,12 +174,21 @@ function buildEmailContent(payload: Required<LeadPayload>, submittedAt: string) 
 }
 
 export async function POST(request: Request) {
+  const clientIp = getClientIp(request);
+  if (clientIp && isRateLimited(clientIp)) {
+    return NextResponse.json({ error: "Too many requests. Please try again shortly." }, { status: 429 });
+  }
+
   let body: LeadPayload;
 
   try {
     body = (await request.json()) as LeadPayload;
   } catch {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+  }
+
+  if (valueFrom(body, "website")) {
+    return NextResponse.json({ ok: true });
   }
 
   const missingFields = requiredFields.filter((field) => !valueFrom(body, field));
@@ -208,7 +252,7 @@ export async function POST(request: Request) {
     timeZone: "Asia/Karachi",
   }).format(new Date());
 
-  const lead: Required<LeadPayload> = {
+  const lead: LeadEmailPayload = {
     fullName: valueFrom(body, "fullName"),
     phone: valueFrom(body, "phone"),
     area: valueFrom(body, "area"),

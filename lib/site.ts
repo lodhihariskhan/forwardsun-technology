@@ -148,32 +148,42 @@ export const faqs = [
   {
     question: "How do I know which solar system is right for my home or business?",
     answer:
-      "ForwardSun Technology reviews your electricity usage, site conditions, backup requirement, and budget before recommending a suitable solar system.",
+      "The right system depends on your electricity bill, monthly units, load requirement, roof space, backup needs, and budget. ForwardSun reviews these details before recommending an on-grid, hybrid, or backup-focused solar solution.",
   },
   {
-    question: "Do you provide both residential and commercial solar systems?",
+    question: "Should I choose on-grid, off-grid, or hybrid solar?",
     answer:
-      "Yes. We provide solar solutions for homes, shops, offices, schools, warehouses, and commercial locations.",
+      "On-grid solar is usually best for reducing electricity bills and may support net metering where eligible. Hybrid solar is better when you also need battery backup during load-shedding. Off-grid solar is mainly used where grid supply is unavailable or highly unreliable.",
   },
   {
-    question: "Can I add battery backup with my solar system?",
+    question: "What is net metering and can ForwardSun guide me?",
     answer:
-      "Yes. We provide hybrid solar systems with lithium or tubular battery options based on your backup requirement.",
+      "Net metering allows eligible solar users to export extra electricity back to the grid and receive adjustment through the electricity bill, subject to utility and regulatory approval. ForwardSun can guide you on whether your system may be suitable for net metering and help you understand the basic process.",
   },
   {
-    question: "Do you provide installation and after-sales support?",
+    question: "Do I need a single-phase or three-phase solar system?",
     answer:
-      "Yes. We provide professional installation, warranty support, maintenance guidance, and after-sales care.",
+      "This depends on your existing electricity connection and load. Many homes use single-phase supply, while larger homes, commercial buildings, and businesses often use three-phase supply. During assessment, we check your meter, load, appliances, and future usage before recommending the right inverter type.",
   },
   {
-    question: "Do you offer EV charger solutions?",
+    question: "What is a hybrid solar system?",
     answer:
-      "Yes. We provide EV charger options for homes, offices, and commercial locations based on requirement and availability.",
+      "A hybrid solar system combines solar panels, a hybrid inverter, and batteries. It helps reduce electricity bills while also providing backup during load-shedding. It usually costs more than a basic on-grid system, but it is useful for homes and businesses that need reliable backup.",
   },
   {
-    question: "What information is needed for a solar estimate?",
+    question: "Do solar panels need maintenance?",
     answer:
-      "Basic location details, average monthly units, available space, and backup requirement help us prepare a better estimate. Our team will review your requirements and recommend the most suitable solar solution for your property.",
+      "Yes. Solar panels should be cleaned regularly and the system should be inspected for dust buildup, wiring issues, inverter alerts, reduced generation, and safety concerns. If your solar output suddenly drops, it is better to schedule a professional inspection.",
+  },
+  {
+    question: "What protection equipment is needed in a solar system?",
+    answer:
+      "A properly planned solar system should include suitable breakers, surge protection, isolators, earthing, wiring, and protection devices. These help protect the panels, inverter, batteries, and appliances from faults, surges, and unsafe conditions.",
+  },
+  {
+    question: "How can I get a solar estimate from ForwardSun?",
+    answer:
+      "You can request a free assessment by sharing your monthly electricity bill, location, property type, and backup needs. ForwardSun will review the details and guide you with a suitable system recommendation.",
   },
 ];
 

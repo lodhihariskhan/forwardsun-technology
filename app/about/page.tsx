@@ -29,7 +29,7 @@ export default function AboutPage() {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-forest/30 to-transparent" />
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <div>
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               About
             </span>
             <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight text-charcoal sm:text-5xl">
@@ -61,7 +61,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Our Approach
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal">What We Focus On</h2>
@@ -71,14 +71,14 @@ export default function AboutPage() {
               product lists.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {values.map((value) => (
               <div
                 key={value}
                 className="rounded-2xl border border-line bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:border-lime/60 hover:shadow-soft"
               >
                 <CheckCircle2 aria-hidden className="h-6 w-6 text-forest" />
-                <h3 className="mt-4 text-base font-black leading-6 text-charcoal">{value}</h3>
+                <h3 className="mt-4 text-base font-bold leading-6 text-charcoal">{value}</h3>
               </div>
             ))}
           </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/25">
                 <Icon aria-hidden className="h-6 w-6" />
               </div>
-              <h2 className="mt-5 text-xl font-black text-charcoal">{title}</h2>
+              <h3 className="mt-5 text-xl font-bold text-charcoal">{title}</h3>
               <p className="mt-4 text-sm leading-7 text-charcoal/70">{text}</p>
             </article>
           ))}
@@ -120,7 +120,7 @@ export default function AboutPage() {
 
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl rounded-3xl border border-line bg-mist p-8 text-center shadow-card">
-          <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
             Honest Guidance
           </span>
           <h2 className="mt-3 text-3xl font-black text-charcoal">Built for Long-Term Solar Support</h2>

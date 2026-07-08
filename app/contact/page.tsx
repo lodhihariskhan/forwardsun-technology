@@ -27,18 +27,18 @@ export default function ContactPage() {
         <div className="absolute inset-0 solar-grid opacity-40" />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.78fr] lg:items-center">
           <div>
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Free Solar Assessment
             </span>
             <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">
-              Contact
+              Get Your Free Solar Assessment
             </h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-charcoal/72">
               Need a solar solution for your home or business? Complete the assessment form below
               and our solar consultant will review your requirements and recommend the most
               suitable solution for your property.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.12em] text-charcoal/70">
+            <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.12em] text-charcoal/70">
               <span className="rounded-full border border-line bg-white px-3 py-2 shadow-sm">
                 Home & Business
               </span>
@@ -62,10 +62,10 @@ export default function ContactPage() {
             <div className="flex items-center gap-4">
               <LogoMark className="h-28 w-28 ring-white/20" priority />
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.18em] text-solar">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">
                   ForwardSun Technology
                 </p>
-                <h2 className="mt-2 text-2xl font-black">Contact Details</h2>
+                <h2 className="mt-2 text-2xl font-bold">Contact Details</h2>
               </div>
             </div>
             <p className="mt-4 text-sm leading-7 text-white/72">
@@ -82,7 +82,7 @@ export default function ContactPage() {
                 >
                   <Phone aria-hidden className="h-5 w-5 shrink-0 text-solar" />
                   <span>
-                    <span className="block text-sm font-black">Call & WhatsApp</span>
+                    <span className="block text-sm font-semibold">Call & WhatsApp</span>
                     <span className="mt-1 block text-sm text-white/72">{site.callDisplay}</span>
                   </span>
                 </TrackedAnchor>
@@ -117,7 +117,7 @@ export default function ContactPage() {
               >
                 <Globe2 aria-hidden className="h-5 w-5 shrink-0 text-solar" />
                 <span>
-                  <span className="block text-sm font-black">Website</span>
+                  <span className="block text-sm font-semibold">Website</span>
                   <span className="mt-1 block text-sm text-white/72">{site.domain}</span>
                 </span>
                 <ExternalLink aria-hidden className="ml-auto h-4 w-4 shrink-0 text-white/45" />
@@ -130,7 +130,7 @@ export default function ContactPage() {
               >
                 <MapPin aria-hidden className="h-5 w-5 shrink-0 text-solar" />
                 <span>
-                  <span className="block text-sm font-black">Location</span>
+                  <span className="block text-sm font-semibold">Location</span>
                   <span className="mt-1 block text-sm text-white/72">{site.location}</span>
                 </span>
                 <ExternalLink aria-hidden className="ml-auto h-4 w-4 shrink-0 text-white/45" />

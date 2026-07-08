@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 
 const trustSignals = [
-  { label: "A-Grade / Tier-1 Product Options", icon: BadgeCheck },
-  { label: "Professional Installation", icon: Wrench },
+  { label: "A-Grade Products", icon: BadgeCheck },
+  { label: "Pro Installation", icon: Wrench },
   { label: "Warranty Support", icon: ShieldCheck },
   { label: "After-Sales Care", icon: Handshake },
-  { label: "Lahore-Based Solar Solutions", icon: MapPin },
-  { label: "Residential & Commercial Systems", icon: Building2 },
+  { label: "Lahore Team", icon: MapPin },
+  { label: "Home & Business", icon: Building2 },
 ];
 
 type TrustSignalsProps = {
@@ -28,7 +28,7 @@ export function TrustSignals({ tone = "light" }: TrustSignalsProps) {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
-            <span className={`text-sm font-black uppercase tracking-[0.18em] ${dark ? "text-solar" : "text-forest"}`}>
+            <span className={`text-xs font-semibold uppercase tracking-[0.16em] ${dark ? "text-solar" : "text-forest"}`}>
               Trust Signals
             </span>
             <h2 className="mt-2 text-2xl font-black sm:text-3xl">
@@ -50,7 +50,7 @@ export function TrustSignals({ tone = "light" }: TrustSignalsProps) {
                 >
                   <Icon aria-hidden className="h-5 w-5" />
                 </span>
-                <span className={`text-sm font-black leading-5 ${dark ? "text-white/80" : "text-charcoal/70"}`}>
+                <span className={`text-sm font-semibold leading-5 ${dark ? "text-white/85" : "text-charcoal/75"}`}>
                   {label}
                 </span>
               </div>

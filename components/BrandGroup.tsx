@@ -16,7 +16,7 @@ export function BrandGroup({ group }: BrandGroupProps) {
             <Icon aria-hidden className="h-6 w-6" />
           </span>
           <div>
-            <h3 className="text-xl font-black text-charcoal">{group.title}</h3>
+            <h3 className="text-xl font-bold text-charcoal">{group.title}</h3>
             <p className="mt-2 text-sm leading-6 text-charcoal/68">{group.description}</p>
           </div>
         </div>

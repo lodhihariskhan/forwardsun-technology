@@ -4,10 +4,13 @@ import {
   CircleDollarSign,
   ClipboardCheck,
   ClipboardX,
+  FileText,
+  Home,
   PanelsTopLeft,
   ShieldCheck,
   SunMedium,
   TrendingUp,
+  Wrench,
   Zap,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -17,8 +20,6 @@ import { BrandCategory } from "@/components/BrandCategory";
 import { CTASection } from "@/components/CTASection";
 import { FAQSection } from "@/components/FAQSection";
 import { HomeEcosystemImage, HomeHeroVisual } from "@/components/SolarVisuals";
-import { PlanningReassurance } from "@/components/PlanningReassurance";
-import { RecentProjects } from "@/components/RecentProjects";
 import { TrustSignals } from "@/components/TrustSignals";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { productPreviewCategories } from "@/lib/products";
@@ -77,24 +78,57 @@ const whyDescriptions = [
   "Support continues through warranty guidance, maintenance direction, and after-sales care.",
 ];
 
+const assessmentItems = [
+  {
+    title: "Monthly Unit Review",
+    text: "We check your average WAPDA bill units to understand actual electricity consumption before sizing.",
+    icon: FileText,
+  },
+  {
+    title: "Site & Roof Conditions",
+    text: "Roof space, orientation, shading, and structural suitability assessed for safe panel installation.",
+    icon: Home,
+  },
+  {
+    title: "Load & Backup Needs",
+    text: "Which appliances to cover, how many backup hours are needed, and which loads have priority.",
+    icon: Zap,
+  },
+  {
+    title: "System Sizing",
+    text: "Right kW range for your usage — no over-sizing or under-sizing the system for your property.",
+    icon: SunMedium,
+  },
+  {
+    title: "Product Fit & Warranty",
+    text: "Matching panels, inverters, and batteries to system requirements, budget, and availability.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "After-Sales Support Plan",
+    text: "Warranty guidance, maintenance access, and long-term after-sales support planned from the start.",
+    icon: Wrench,
+  },
+];
+
 export default function HomePage() {
   return (
     <>
-      <section className="sun-glow relative isolate overflow-hidden px-4 py-20 text-charcoal sm:px-6 lg:px-8 lg:py-24">
+      <section className="sun-glow relative isolate overflow-hidden px-4 py-24 text-charcoal sm:px-6 lg:px-8 lg:py-28">
         <div className="absolute left-[-5rem] top-12 h-56 w-56 rounded-full border border-lime/25 bg-white/40" />
         <div className="absolute right-8 top-10 h-32 w-32 rounded-full bg-solar/15 blur-2xl" />
         <div className="absolute inset-0 solar-grid opacity-40" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-line to-transparent" />
         <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-forest shadow-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-forest shadow-sm">
               <SunMedium aria-hidden className="h-4 w-4" />
               ForwardSun Technology
             </span>
             <h1 className="mt-7 max-w-3xl text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
               Reliable Solar Solutions for Homes & Businesses
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-charcoal/72">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-charcoal/70">
               Reduce electricity costs with professionally designed solar systems, quality product
               selection, clean installation, and long-term after-sales support.
             </p>
@@ -128,7 +162,7 @@ export default function HomePage() {
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-9 max-w-3xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Energy Problems
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
@@ -139,20 +173,20 @@ export default function HomePage() {
               from the beginning.
             </p>
           </div>
-          <div className="grid gap-5 md:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-4">
             {painPoints.map((point, index) => {
               const Icon = painIcons[index] ?? AlertTriangle;
 
               return (
-              <div
-                key={point}
-                className="rounded-2xl border border-line bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:border-lime/60 hover:shadow-soft"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/30">
-                  <Icon aria-hidden className="h-5 w-5" />
+                <div
+                  key={point}
+                  className="rounded-2xl border border-line bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:border-lime/60 hover:shadow-soft"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/30">
+                    <Icon aria-hidden className="h-5 w-5" />
+                  </div>
+                  <p className="mt-5 font-bold leading-6 text-charcoal">{point}</p>
                 </div>
-                <p className="mt-5 font-black leading-6 text-charcoal">{point}</p>
-              </div>
               );
             })}
           </div>
@@ -163,7 +197,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
-              <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
                 Solutions
               </span>
               <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
@@ -178,7 +212,7 @@ export default function HomePage() {
               View Services
             </ButtonLink>
           </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {serviceDetails.map((service) => {
               const Icon = service.icon;
 
@@ -191,7 +225,7 @@ export default function HomePage() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/25 transition group-hover:bg-forest group-hover:text-white">
                     <Icon aria-hidden className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-4 text-base font-black leading-6 text-charcoal">
+                  <h3 className="mt-4 text-base font-bold leading-6 text-charcoal">
                     {service.title}
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-charcoal/68">{service.overview}</p>
@@ -206,13 +240,13 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-4xl">
-              <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
                 Products & Components
               </span>
               <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
                 Quality Brands & Product Categories We Supply & Install
               </h2>
-              <p className="mt-5 text-base leading-8 text-charcoal/72">
+              <p className="mt-5 text-base leading-8 text-charcoal/70">
                 ForwardSun Technology works with reliable solar panels, inverters, batteries, EV
                 chargers, BOS products, and mounting structures selected according to system
                 requirement, budget, warranty, availability, and long-term performance.
@@ -227,7 +261,7 @@ export default function HomePage() {
               <BrandCategory key={category.title} category={category} compact />
             ))}
           </div>
-          <p className="mt-8 rounded-2xl border border-line bg-white p-4 text-sm font-bold leading-6 text-charcoal/70 shadow-sm">
+          <p className="mt-8 rounded-2xl border border-line bg-white p-4 text-sm font-medium leading-6 text-charcoal/70 shadow-sm">
             Product options are recommended based on system size, budget, availability, warranty,
             and customer requirements.
           </p>
@@ -237,7 +271,7 @@ export default function HomePage() {
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               System Planning
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
@@ -259,7 +293,7 @@ export default function HomePage() {
                       <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/25">
                         <Icon aria-hidden className="h-5 w-5" />
                       </span>
-                      <h3 className="mt-4 text-base font-black text-charcoal">{item.title}</h3>
+                      <h3 className="mt-4 text-base font-bold text-charcoal">{item.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-charcoal/68">{item.text}</p>
                     </div>
                   );
@@ -270,18 +304,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <PlanningReassurance />
-
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div className="max-w-3xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Why Choose Us
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
               Why Choose ForwardSun?
             </h2>
-            <p className="mt-5 text-base leading-8 text-charcoal/72">
+            <p className="mt-5 text-base leading-8 text-charcoal/70">
               Every recommendation starts with practical assessment and clear communication, so the
               system fits the site, usage, and support needs.
             </p>
@@ -293,7 +325,7 @@ export default function HomePage() {
                   <Icon aria-hidden className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-black leading-6 text-charcoal">{title}</h3>
+                  <h3 className="text-base font-bold leading-6 text-charcoal">{title}</h3>
                   <p className="mt-1 text-sm leading-6 text-charcoal/68">{whyDescriptions[index]}</p>
                 </div>
               </div>
@@ -305,20 +337,20 @@ export default function HomePage() {
       <section className="bg-mist px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Process
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
               How Our Solar Assessment Works
             </h2>
-            <p className="mt-5 text-base leading-8 text-charcoal/72">
+            <p className="mt-5 text-base leading-8 text-charcoal/70">
               From the first request to after-sales support, every step is focused on a clear and
               practical solar plan.
             </p>
             <div className="mt-7 rounded-2xl border border-line bg-white p-5 shadow-card">
               <div className="flex gap-3">
                 <ShieldCheck aria-hidden className="h-5 w-5 shrink-0 text-forest" />
-                <p className="text-sm font-bold leading-6 text-charcoal/72">
+                <p className="text-sm leading-6 text-charcoal/72">
                   The assessment helps align product selection, quotation, and installation scope
                   before work begins.
                 </p>
@@ -329,7 +361,7 @@ export default function HomePage() {
               className="mt-7"
               variant="primary"
               trackingEvent="get_free_assessment_click"
-              trackingLocation="hero"
+              trackingLocation="process_section"
             >
               Start Your Assessment
             </ButtonLink>
@@ -337,11 +369,11 @@ export default function HomePage() {
           <ol className="relative grid gap-0 border-l border-line pl-6">
             {processSteps.map((step, index) => (
               <li key={step.title} className="relative pb-8 last:pb-0">
-                <span className="absolute -left-[31px] flex h-12 w-12 items-center justify-center rounded-full bg-forest text-sm font-black text-white ring-8 ring-mist">
+                <span className="absolute -left-[31px] flex h-12 w-12 items-center justify-center rounded-full bg-forest text-sm font-bold text-white ring-8 ring-mist">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="ml-8 rounded-2xl border border-line bg-white p-5 shadow-card">
-                  <h3 className="text-base font-black text-charcoal">{step.title}</h3>
+                  <h3 className="text-base font-bold text-charcoal">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-charcoal/68">{step.description}</p>
                 </div>
               </li>
@@ -350,7 +382,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      <RecentProjects />
+      <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
+              Our Approach
+            </span>
+            <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
+              What We Assess Before Quoting
+            </h2>
+            <p className="mt-4 text-base leading-7 text-charcoal/70">
+              Every solar quotation starts with a practical review of your site, usage, and
+              requirements — not a standard package pushed to every customer.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {assessmentItems.map(({ title, text, icon: Icon }) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-line bg-white p-6 shadow-card"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/30">
+                  <Icon aria-hidden className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-base font-bold text-charcoal">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-charcoal/68">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <FAQSection />
 

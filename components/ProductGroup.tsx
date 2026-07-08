@@ -19,20 +19,20 @@ export function ProductGroup({ group, index }: ProductGroupProps) {
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/25">
           <Icon aria-hidden className="h-7 w-7" />
         </span>
-        <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-solar">
+        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-solar">
           System Group {String(index + 1).padStart(2, "0")}
         </p>
-        <h3 className="mt-2 text-2xl font-black text-charcoal">{group.title}</h3>
+        <h3 className="mt-2 text-2xl font-bold text-charcoal">{group.title}</h3>
         <p className="mt-4 text-sm leading-7 text-charcoal/70">{group.description}</p>
       </div>
       <div className={`flex items-center ${reversed ? "lg:col-start-1" : ""}`}>
         <div className="grid w-full gap-3 sm:grid-cols-2">
           {group.items.map((item) => (
             <div key={item} className="rounded-2xl border border-line bg-white p-4 shadow-sm">
-              <span className="text-xs font-black uppercase tracking-[0.14em] text-forest">
+              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-forest">
                 Included
               </span>
-              <p className="mt-2 text-sm font-black leading-6 text-charcoal">{item}</p>
+              <p className="mt-2 text-sm font-semibold leading-6 text-charcoal">{item}</p>
             </div>
           ))}
         </div>

@@ -17,7 +17,7 @@ export function CTASection({
       <div className="absolute right-10 top-8 h-40 w-40 rounded-full border border-solar/25 bg-solar/10" />
       <div className="relative mx-auto flex max-w-7xl flex-col gap-8 rounded-3xl border border-white/15 bg-deep/70 p-7 shadow-premium md:flex-row md:items-center md:justify-between lg:p-10">
         <div className="max-w-2xl">
-          <span className="text-sm font-black uppercase tracking-[0.18em] text-solar">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">
             Consultation
           </span>
           <h2 className="mt-3 text-3xl font-black sm:text-4xl">{title}</h2>
@@ -34,7 +34,7 @@ export function CTASection({
           </ButtonLink>
           <ButtonLink
             href={whatsappLink("Hello ForwardSun Technology, I want a free solar assessment.")}
-            variant="light"
+            variant="ghost"
             icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
             trackingEvent="whatsapp_click"
             trackingLocation="cta_section"

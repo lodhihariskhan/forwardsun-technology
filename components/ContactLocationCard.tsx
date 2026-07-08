@@ -6,7 +6,7 @@ export function ContactLocationCard() {
     <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
         <div>
-          <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
             Location
           </span>
           <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
@@ -25,7 +25,7 @@ export function ContactLocationCard() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/25">
                   <Map aria-hidden className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 text-xl font-black text-charcoal">DHA Rahbar, Lahore</h3>
+                <h3 className="mt-5 text-xl font-bold text-charcoal">DHA Rahbar, Lahore</h3>
                 <p className="mt-3 max-w-xl text-sm leading-7 text-charcoal/68">
                   Use Google Maps for directions to the service area. A detailed map embed can be
                   added when the verified business map listing is available.

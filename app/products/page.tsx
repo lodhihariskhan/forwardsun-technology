@@ -30,7 +30,7 @@ export default function ProductsPage() {
         <div className="absolute right-10 top-8 h-36 w-36 rounded-full bg-solar/15 blur-2xl" />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center">
           <div>
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Product Options
             </span>
             <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">
@@ -70,7 +70,7 @@ export default function ProductsPage() {
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-4xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Product Categories
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
@@ -98,7 +98,7 @@ export default function ProductsPage() {
       <section className="bg-mist px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-4xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               System View
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
@@ -122,7 +122,7 @@ export default function ProductsPage() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-sunsoft text-forest ring-1 ring-solar/25">
                     <Icon aria-hidden className="h-6 w-6" />
                   </span>
-                  <h3 className="mt-5 text-xl font-black text-charcoal">{item.title}</h3>
+                  <h3 className="mt-5 text-xl font-bold text-charcoal">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-charcoal/70">{item.description}</p>
                 </article>
               );
@@ -134,7 +134,7 @@ export default function ProductsPage() {
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-4xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
               Product Groups
             </span>
             <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
@@ -156,7 +156,7 @@ export default function ProductsPage() {
       <section className="bg-forest px-4 py-20 text-white sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 rounded-3xl border border-white/15 bg-white/10 p-7 shadow-premium md:flex-row md:items-center md:justify-between lg:p-10">
           <div className="max-w-3xl">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-solar">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">
               Product Guidance
             </span>
             <h2 className="mt-3 text-3xl font-black sm:text-4xl">
@@ -179,7 +179,7 @@ export default function ProductsPage() {
             </ButtonLink>
             <ButtonLink
               href={whatsappLink("Hello ForwardSun Technology, I need help selecting solar products.")}
-              variant="light"
+              variant="ghost"
               icon={<WhatsAppIcon aria-hidden className="h-4 w-4 shrink-0" />}
               trackingEvent="whatsapp_click"
               trackingLocation="products_cta"

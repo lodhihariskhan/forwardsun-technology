@@ -7,7 +7,7 @@ import { trackGetFreeAssessmentClick, trackWhatsAppClick } from "@/lib/analytics
 type ButtonLinkProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "secondary" | "outline" | "light";
+  variant?: "primary" | "secondary" | "outline" | "light" | "ghost";
   icon?: ReactNode;
   className?: string;
   trackingEvent?: "get_free_assessment_click" | "whatsapp_click";
@@ -20,6 +20,7 @@ const variants = {
   outline:
     "border border-line bg-white text-forest shadow-sm hover:-translate-y-0.5 hover:border-leaf hover:bg-mist hover:text-deep hover:shadow-card",
   light: "border border-line bg-white text-forest shadow-card hover:-translate-y-0.5 hover:border-solar hover:bg-sunsoft",
+  ghost: "border border-white/30 bg-white/10 text-white hover:-translate-y-0.5 hover:bg-white/20 hover:border-white/50",
 };
 
 export function ButtonLink({

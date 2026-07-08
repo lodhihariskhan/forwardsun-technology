@@ -126,7 +126,7 @@ export function ContactForm() {
       </div>
 
       <div className="border-b border-line pb-5">
-        <p className="text-sm font-black uppercase tracking-[0.18em] text-forest">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">
           Assessment Request
         </p>
         <h2 className="mt-2 text-2xl font-black text-charcoal">Solar consultation details</h2>

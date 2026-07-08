@@ -57,7 +57,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-full px-4 py-2 text-sm font-black transition ${
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                   active ? "bg-white text-forest shadow-sm" : "text-charcoal/72 hover:bg-white hover:text-forest"
                 }`}
                 aria-current={active ? "page" : undefined}
@@ -89,16 +89,28 @@ export function Header() {
           </ButtonLink>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white text-charcoal shadow-sm transition hover:border-forest hover:text-forest lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? <X aria-hidden className="h-5 w-5" /> : <Menu aria-hidden className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={whatsappLink("Hello ForwardSun Technology, I want to discuss a solar solution.")}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white text-forest shadow-sm transition hover:border-solar hover:bg-sunsoft hover:text-deep focus:outline-none focus:ring-2 focus:ring-solar focus:ring-offset-2"
+            aria-label="Chat on WhatsApp"
+            onClick={() => trackWhatsAppClick("header_mobile")}
+          >
+            <WhatsAppIcon aria-hidden className="h-5 w-5" />
+          </a>
+          <button
+            type="button"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white text-charcoal shadow-sm transition hover:border-forest hover:text-forest"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label="Toggle menu"
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X aria-hidden className="h-5 w-5" /> : <Menu aria-hidden className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {open ? (
@@ -112,9 +124,9 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`rounded-xl px-3 py-3 text-sm font-black transition ${
-                    active ? "bg-mist text-forest" : "text-charcoal"
-                  }`}
+                  className={`rounded-xl px-3 py-3 text-sm font-semibold transition ${
+                  active ? "bg-mist text-forest" : "text-charcoal/80"
+                }`}
                   aria-current={active ? "page" : undefined}
                 >
                   {item.label}

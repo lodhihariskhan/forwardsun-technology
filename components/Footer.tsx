@@ -27,7 +27,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-black uppercase tracking-[0.16em] text-solar">Services</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">Services</h2>
           <ul className="mt-5 grid gap-3 text-sm text-white/72">
             {footerServices.map((service) => (
               <li key={service}>
@@ -40,7 +40,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-black uppercase tracking-[0.16em] text-solar">Products</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">Products</h2>
           <ul className="mt-5 grid gap-3 text-sm text-white/72">
             {footerProducts.map((product) => (
               <li key={product}>
@@ -53,7 +53,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-black uppercase tracking-[0.16em] text-solar">Pages</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">Pages</h2>
           <ul className="mt-5 grid gap-3 text-sm text-white/72">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -76,7 +76,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-black uppercase tracking-[0.16em] text-solar">Contact</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">Contact</h2>
           <ul className="mt-5 grid gap-4 text-sm text-white/72">
             <li className="flex gap-3">
               <Phone aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-solar" />

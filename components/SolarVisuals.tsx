@@ -80,40 +80,32 @@ export function HomeHeroVisual() {
                 <SunMedium aria-hidden className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-forest">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-forest">
                   Solar System
                 </p>
-                <p className="mt-1 text-sm font-black text-charcoal">Energy-ready planning</p>
+                <p className="mt-1 text-sm font-bold text-charcoal">Energy-ready planning</p>
               </div>
             </div>
           </div>
-          <div className="absolute inset-x-5 bottom-5 grid gap-3 sm:grid-cols-2">
+        </div>
+        <div className="border-t border-line bg-white p-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-forest">
+            System Components
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
             {heroEquipment.map(({ label, icon: Icon }) => (
-              <div
+              <span
                 key={label}
-                className="flex items-center gap-3 rounded-2xl border border-white/20 bg-white/90 p-3 shadow-sm backdrop-blur"
+                className="inline-flex items-center gap-1.5 rounded-full border border-line bg-mist px-3 py-1.5 text-xs font-semibold text-charcoal/80"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest text-solar">
-                  <Icon aria-hidden className="h-4 w-4" />
-                </span>
-                <span className="text-sm font-black text-charcoal">{label}</span>
-              </div>
+                <Icon aria-hidden className="h-3.5 w-3.5 text-forest" />
+                {label}
+              </span>
             ))}
           </div>
-        </div>
-        <div className="grid gap-3 border-t border-line bg-white p-5 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-forest">
-              Energy Flow
-            </p>
-            <p className="mt-2 text-sm leading-6 text-charcoal/70">
-              Generation, conversion, backup, EV charging, and protection planned as one system.
-            </p>
-          </div>
-          <div className="hidden h-px w-16 bg-solar sm:block" />
-          <div className="rounded-2xl bg-forest p-4 text-sm font-bold leading-6 text-white">
-            Usage review + product selection + clean installation + after-sales support.
-          </div>
+          <p className="mt-4 text-xs leading-5 text-charcoal/60">
+            Usage review · Product selection · Clean installation · After-sales support
+          </p>
         </div>
       </div>
     </div>
@@ -133,7 +125,7 @@ export function HomeEcosystemImage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/75 via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/20 bg-white/90 p-4 shadow-sm backdrop-blur">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-forest">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-forest">
             Complete System View
           </p>
           <p className="mt-2 text-sm font-bold leading-6 text-charcoal/72">
@@ -151,7 +143,7 @@ export function ServicesOverviewVisual() {
       <div className="absolute right-6 top-6 h-24 w-24 rounded-full bg-solar/20 blur-2xl" />
       <div className="relative flex items-center justify-between gap-5">
         <div>
-          <h2 className="text-2xl font-black text-charcoal">Assessment-led service</h2>
+          <h2 className="text-2xl font-bold text-charcoal">Assessment-led service</h2>
           <p className="mt-3 text-sm leading-7 text-charcoal/70">
             One planning workflow, five practical service paths.
           </p>
@@ -174,8 +166,8 @@ export function ServicesOverviewVisual() {
                 <Icon aria-hidden className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-sm font-black text-charcoal">{label}</p>
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-forest/65">
+                <p className="text-sm font-bold text-charcoal">{label}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-forest/65">
                   Service path
                 </p>
               </div>
@@ -195,7 +187,7 @@ export function ProductEcosystemVisual() {
           <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-solar text-forest shadow-sm">
             <SunMedium aria-hidden className="h-6 w-6" />
           </span>
-          <h3 className="mt-5 text-2xl font-black">Complete solar system map</h3>
+          <h3 className="mt-5 text-2xl font-bold">Complete solar system map</h3>
           <p className="mt-4 text-sm leading-7 text-white/74">
             Products are selected as connected equipment, from rooftop generation to safety,
             wiring, mounting, monitoring, and support.
@@ -207,8 +199,8 @@ export function ProductEcosystemVisual() {
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-forest shadow-sm ring-1 ring-solar/25">
                 <Icon aria-hidden className="h-5 w-5" />
               </span>
-              <p className="mt-4 text-sm font-black text-charcoal">{label}</p>
-              <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-forest/65">
+              <p className="mt-4 text-sm font-bold text-charcoal">{label}</p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-forest/65">
                 {detail}
               </p>
             </div>
@@ -251,10 +243,10 @@ export function ContactAssessmentVisual() {
       <div className="rounded-3xl bg-forest p-6 text-white">
         <div className="flex items-start justify-between gap-5">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-solar">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">
               Assessment Flow
             </p>
-            <h2 className="mt-3 text-2xl font-black">From bill review to clear system plan</h2>
+            <h2 className="mt-3 text-2xl font-bold">From bill review to clear system plan</h2>
           </div>
           <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/10 text-solar ring-1 ring-white/15">
             <ClipboardCheck aria-hidden className="h-7 w-7" />
@@ -264,7 +256,7 @@ export function ContactAssessmentVisual() {
           {assessmentSteps.map(({ label, icon: Icon }) => (
             <div key={label} className="rounded-2xl border border-white/10 bg-white/10 p-4">
               <Icon aria-hidden className="h-5 w-5 text-solar" />
-              <p className="mt-3 text-sm font-black">{label}</p>
+              <p className="mt-3 text-sm font-semibold">{label}</p>
             </div>
           ))}
         </div>
@@ -280,17 +272,17 @@ export function AboutTrustVisual() {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
           <LogoMark className="h-28 w-28 ring-white/20" priority />
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-solar">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-solar">
               ForwardSun Technology
             </p>
-            <h2 className="mt-3 text-2xl font-black">Trusted solar planning</h2>
+            <h2 className="mt-3 text-2xl font-bold">Trusted solar planning</h2>
           </div>
         </div>
         <div className="mt-7 grid gap-2 sm:grid-cols-3">
           {trustTiles.map((item) => (
             <div key={item} className="rounded-2xl border border-solar/25 bg-white/10 p-3">
               <span className="block h-1.5 w-10 rounded-full bg-solar" />
-              <p className="mt-3 text-xs font-black uppercase tracking-[0.12em] text-white/86">
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-white/86">
                 {item}
               </p>
             </div>
@@ -304,7 +296,7 @@ export function AboutTrustVisual() {
           ].map((item) => (
             <div key={item} className="flex items-center gap-3 rounded-2xl bg-white/10 p-3">
               <CheckCircle2 aria-hidden className="h-5 w-5 text-solar" />
-              <span className="text-sm font-black">{item}</span>
+              <span className="text-sm font-semibold">{item}</span>
             </div>
           ))}
         </div>

@@ -6,7 +6,7 @@ export function FAQSection() {
     <section className="bg-mist px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr]">
         <div className="max-w-3xl">
-          <span className="text-sm font-black uppercase tracking-[0.18em] text-forest">FAQ</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest">FAQ</span>
           <h2 className="mt-3 text-3xl font-black text-charcoal sm:text-4xl">
             Frequently Asked Questions
           </h2>
@@ -20,7 +20,7 @@ export function FAQSection() {
               key={item.question}
               className="group rounded-2xl border border-line bg-white p-6 shadow-card open:border-lime/60 open:shadow-soft"
             >
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black leading-6 text-charcoal marker:hidden">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-bold leading-6 text-charcoal marker:hidden">
                 <span>{item.question}</span>
                 <ChevronDown
                   aria-hidden

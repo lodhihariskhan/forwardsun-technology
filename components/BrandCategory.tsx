@@ -17,7 +17,7 @@ export function BrandCategory({ category, compact = false }: BrandCategoryProps)
           <Icon aria-hidden className="h-6 w-6" />
         </span>
         <div>
-          <h3 className="text-lg font-black text-charcoal">{category.title}</h3>
+          <h3 className="text-lg font-bold text-charcoal">{category.title}</h3>
           <p className="mt-2 text-sm leading-6 text-charcoal/68">{category.description}</p>
         </div>
       </div>
